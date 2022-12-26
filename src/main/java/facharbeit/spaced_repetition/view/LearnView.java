@@ -13,14 +13,14 @@ public class LearnView extends JPanel {
 
     private JLabel algorithmLabel, chosenCardLabel, frontLabel, backLabel, divideLabel, frontDataLabel, backDataLabel;
     private JComboBox comboBox;
-    private JButton againButton, hardButton, goodButton, easyButton;
+    private JButton againButton, hardButton, okayButton, goodButton, easyButton;
 
     /**
      * Instantiates a new Learn view using TableLayout
      */
     public LearnView() {
         setLayout(new TableLayout(new double[][] {
-                {300, 450},
+                {300, 550},
                 {TableLayout.PREFERRED, TableLayout.PREFERRED, TableLayout.PREFERRED, TableLayout.PREFERRED, TableLayout.PREFERRED, TableLayout.PREFERRED, TableLayout.PREFERRED, TableLayout.PREFERRED, TableLayout.PREFERRED, TableLayout.PREFERRED, TableLayout.PREFERRED, 244}}));
         ((TableLayout) getLayout()).setHGap(5);
         ((TableLayout) getLayout()).setVGap(5);
@@ -53,7 +53,7 @@ public class LearnView extends JPanel {
 
         //---- Divide front and back ----
         this.divideLabel = new JLabel();
-        this.divideLabel.setText("-------------------------------------------------------------------------------------------");
+        this.divideLabel.setText("---------------------------------------------------------------------------------------------------------------------------------");
         add(this.divideLabel, new TableLayoutConstraints(1, 6, 1, 6, TableLayoutConstraints.CENTER, TableLayoutConstraints.FULL));
 
         //---- Back ----
@@ -69,7 +69,7 @@ public class LearnView extends JPanel {
         //======== Buttons to rate the card ========
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new TableLayout(new double[][] {
-                {100, 100, 100, 100},
+                {100, 100, 100, 100, 100},
                 {TableLayout.PREFERRED}}));
         ((TableLayout) buttonPanel.getLayout()).setHGap(5);
         ((TableLayout) buttonPanel.getLayout()).setVGap(5);
@@ -83,15 +83,20 @@ public class LearnView extends JPanel {
         this.hardButton.setForeground(Color.red);
         buttonPanel.add(this.hardButton, new TableLayoutConstraints(1, 0, 1, 0, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
 
+        this.okayButton = new JButton();
+        this.okayButton.setText("Okay");
+        this.okayButton.setForeground(Color.orange);
+        buttonPanel.add(this.okayButton, new TableLayoutConstraints(2, 0, 2, 0, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
+
         this.goodButton = new JButton();
         this.goodButton.setText("Gut");
-        this.goodButton.setForeground(Color.orange);
-        buttonPanel.add(this.goodButton, new TableLayoutConstraints(2, 0, 2, 0, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
+        this.goodButton.setForeground(Color.green);
+        buttonPanel.add(this.goodButton, new TableLayoutConstraints(3, 0, 3, 0, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
 
         this.easyButton = new JButton();
         this.easyButton.setText("Einfach");
-        this.easyButton.setForeground(Color.green);
-        buttonPanel.add(this.easyButton, new TableLayoutConstraints(3, 0, 3, 0, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
+        this.easyButton.setForeground(Color.blue);
+        buttonPanel.add(this.easyButton, new TableLayoutConstraints(4, 0, 4, 0, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
 
         add(buttonPanel, new TableLayoutConstraints(1, 10, 1, 10, TableLayoutConstraints.CENTER, TableLayoutConstraints.FULL));
     }
