@@ -5,8 +5,7 @@ import de.nickhansen.facharbeit.spaced_repetition.database.DatabaseAdapter;
 import de.nickhansen.facharbeit.spaced_repetition.gui.view.MainView;
 
 import javax.swing.*;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Properties;
@@ -34,9 +33,8 @@ public class SpacedRepetitionApp {
 
         // Laden der Konfigurationsdatei, die unter resources/config.properties gefunden werden kann
         try {
-            FileInputStream propsInput = new FileInputStream("src/main/resources/config.properties");
             this.config = new Properties();
-            this.config.load(propsInput);
+            this.config.load(getClass().getResourceAsStream("/config.properties"));
             System.out.println("[Config] Successfully loaded the configuration file");
         } catch (IOException e) {
             System.out.println("[Config] Failed loading the configuration file: " + e);
