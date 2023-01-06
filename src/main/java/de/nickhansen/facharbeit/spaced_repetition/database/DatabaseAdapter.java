@@ -17,12 +17,16 @@ public class DatabaseAdapter {
      * Außerdem werden alle Tabellen erstellt.
      */
     public DatabaseAdapter() {
+        // Daten für die Datenbankverbindung aus der Konfigurationsdatei auslesen
         this.username = SpacedRepetitionApp.getInstance().getConfig().getProperty("mysqlUsername");
         this.password = SpacedRepetitionApp.getInstance().getConfig().getProperty("mysqlPassword");
         this.hostname = SpacedRepetitionApp.getInstance().getConfig().getProperty("mysqlHostname");
         this.database = SpacedRepetitionApp.getInstance().getConfig().getProperty("mysqlDatabase");
+
+        // MySQL-Objekt mit den geladenen Daten erzeugen
         this.mySQL = new MySQL(this.username, this.password, this.hostname, this.database).connect();
 
+        // Datenbanktabellen erstellen
         this.createTables();
     }
 
@@ -30,6 +34,7 @@ public class DatabaseAdapter {
      * Erstellt alle für die Applikation notwendigen Tabellen in der Datenbank, falls diese noch nicht existieren.
      */
     private void createTables() {
+        // Vorder- und Rückseitentext der Karteikarte auf 100 Zeichen limitiert; UUIDs sind immer 36 Zeichen lang; Erstellungszeitpunkt wird in Millisekunden gespeichert
         this.mySQL.queryUpdate("CREATE TABLE IF NOT EXISTS cards (uuid VARCHAR(36), front VARCHAR(100), back VARCHAR(100), created bigint)");
     }
 
