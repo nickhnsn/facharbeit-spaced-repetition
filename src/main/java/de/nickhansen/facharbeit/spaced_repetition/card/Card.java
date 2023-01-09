@@ -56,6 +56,16 @@ public class Card {
     }
 
     /**
+     * Erhalten einer Karteikarte über ihre UUID
+     * @param uuid die UUID der Karteikarte
+     * @return geladenes Card-Objekt
+     */
+    public static Card getByUUID(UUID uuid) {
+        // Erhalte die Karteikarte (Card) aus der HashMap per UUID
+        return SpacedRepetitionApp.getInstance().getCards().get(uuid);
+    }
+
+    /**
      * Erhalten des Vorderseitentexts der Karteikarte
      * @return der Vorderseitentext
      */

@@ -1,6 +1,6 @@
 package de.nickhansen.facharbeit.spaced_repetition.listener;
 
-import de.nickhansen.facharbeit.spaced_repetition.SpacedRepetitionApp;
+import de.nickhansen.facharbeit.spaced_repetition.card.Card;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -24,7 +24,10 @@ public class CardDeletionListener implements ActionListener {
 
         // Delete card
         UUID uuid = (UUID) table.getModel().getValueAt(modelRow, 3);
-        SpacedRepetitionApp.getInstance().getCards().get(uuid).delete();
+        Card card = Card.getByUUID(uuid);
+        if (card != null) {
+            card.delete();
+        }
 
         // Delete table row
         ((DefaultTableModel) table.getModel()).removeRow(modelRow);
