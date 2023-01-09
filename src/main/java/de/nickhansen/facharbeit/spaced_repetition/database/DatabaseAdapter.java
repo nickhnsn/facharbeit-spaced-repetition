@@ -34,8 +34,11 @@ public class DatabaseAdapter {
      * Erstellt alle für die Applikation notwendigen Tabellen in der Datenbank, falls diese noch nicht existieren.
      */
     private void createTables() {
-        // Vorder- und Rückseitentext der Karteikarte auf 100 Zeichen limitiert; UUIDs sind immer 36 Zeichen lang; Erstellungszeitpunkt wird in Millisekunden gespeichert
-        this.mySQL.queryUpdate("CREATE TABLE IF NOT EXISTS cards (uuid VARCHAR(36), front VARCHAR(100), back VARCHAR(100), created bigint)");
+        /*
+        Vorder- und Rückseitentext der Karteikarte auf 100 Zeichen limitiert; UUIDs sind immer 36 Zeichen lang; Erstellungszeitpunkt wird in Millisekunden gespeichert.
+        Dabei wird die UUID als Primärschlüssel festgelegt, da sich mit der UUID die Zeile eindeutig identifizieren lässt. Jede Karteikarte benötigt eine UUID, daher darf diese nicht null sein.
+         */
+        this.mySQL.queryUpdate("CREATE TABLE IF NOT EXISTS cards (uuid VARCHAR(36) NOT NULL, front VARCHAR(100), back VARCHAR(100), created bigint, PRIMARY KEY (uuid))");
     }
 
     /**
