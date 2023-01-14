@@ -6,7 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="facharbeit-spaced-repetition" />
+        <module name="spaced-repetition-api" />
+        <module name="spaced-repetition-software" />
       </profile>
     </annotationProcessing>
   </component>
