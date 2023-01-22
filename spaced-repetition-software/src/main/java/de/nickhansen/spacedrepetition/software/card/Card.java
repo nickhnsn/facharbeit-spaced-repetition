@@ -2,6 +2,8 @@ package de.nickhansen.spacedrepetition.software.card;
 
 import de.nickhansen.spacedrepetition.software.SpacedRepetitionApp;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.UUID;
 
 /**
@@ -35,15 +37,25 @@ public class Card {
      * @param back der Rückseitentext der Karteikarte
      */
     public static void create(String front, String back) {
-        UUID uuid = UUID.randomUUID();
+        UUID uuid = UUID.randomUUID(); // Zufällig generierte UUID für die Karteikarte
         Long created = System.currentTimeMillis(); // Aktueller Zeitpunkt zur Erstellung der Karteikarte
 
         // Karteikarte in der Datenbank erstellen
-        SpacedRepetitionApp.getInstance().getDatabaseAdapter().getMySQL().update("INSERT INTO cards (uuid, front, back, created) VALUES ('" + uuid + "', '" + front + "', '" + back + "', '" + created + "')");
+        try {
+            PreparedStatement ps = SpacedRepetitionApp.getInstance().getDatabaseAdapter().getMySQL().prepare("INSERT INTO cards (uuid, front, back, created) VALUES (?, ?, ?, ?)");
+            ps.setString(1, uuid.toString());
+            ps.setString(2, front);
+            ps.setString(3, back);
+            ps.setString(4, created.toString());
+            ps.executeUpdate();
+            System.out.println("[Cards] Sucessfully inserted card " + uuid + " into database");
+        } catch (SQLException e) {
+            System.out.println("[Cards] Failed inserting the card " + uuid + " into database: " + e);
+        }
 
         // Karteikarten-Objekt erstellen
         new Card(uuid, front, back, created);
-        System.out.println("[Cards] Sucessfully created card " + uuid);
+        System.out.println("[Cards] Sucessfully created card " + uuid + " locally");
     }
 
     /**
