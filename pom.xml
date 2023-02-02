@@ -24,6 +24,7 @@
                     <!-- Default configuration for all reports -->
                     <failOnError>false</failOnError>
                     <reportOutputDirectory>${basedir}</reportOutputDirectory>
+                    <destDir>docs</destDir>
                 </configuration>
                 <executions>
                     <execution>
