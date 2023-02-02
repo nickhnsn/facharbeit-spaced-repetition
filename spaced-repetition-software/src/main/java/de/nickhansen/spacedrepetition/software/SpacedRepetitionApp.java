@@ -28,7 +28,7 @@ public class SpacedRepetitionApp {
     /**
      * Instanziiert die SpacedRepetitionApp. Hier werden für das Starten der Applikation wesentliche Schritte durchgeführt.
      */
-    public SpacedRepetitionApp() {
+    protected SpacedRepetitionApp() {
         instance = this;
 
         // Laden der Konfigurationsdatei, die unter resources/config.properties gefunden werden kann

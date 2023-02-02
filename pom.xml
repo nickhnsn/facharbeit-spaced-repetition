@@ -21,9 +21,21 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.4.1</version>
                 <configuration>
-                    <show>private</show>
-                    <nohelp>true</nohelp>
+                    <!-- Default configuration for all reports -->
+                    <failOnError>false</failOnError>
+                    <reportOutputDirectory>${basedir}</reportOutputDirectory>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>aggregate</id>
+                        <goals>
+                            <goal>aggregate</goal>
+                        </goals>
+                        <phase>site</phase>
+                        <configuration>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
