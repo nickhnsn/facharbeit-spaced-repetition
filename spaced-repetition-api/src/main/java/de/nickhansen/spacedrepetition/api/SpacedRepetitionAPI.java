@@ -25,7 +25,7 @@ public class SpacedRepetitionAPI {
      * @param repetitions bisherige Wiederholungen
      * @param easinessFactor bisheriger Leichtigkeitsfaktor EF
      * @param interval zuvor genutztes Intervall
-     * @return
+     * @return Rückgabewerte des SM-2-Algorithmus
      */
     public SM2AlgorithmResult basicSM2(int quality, int repetitions, int easinessFactor, int interval) {
         SM2Algorithm sm2 = SM2Algorithm.builder()
@@ -42,7 +42,7 @@ public class SpacedRepetitionAPI {
      * Beispiel zur Verwendung des implementierten Algorithmus nach Leitners Lernkartei.
      * @param boxId bisherige Nummer des Fachs für den Inhalt
      * @param retrievalSuccessful Wahrheitswert, der angibt, ob der Lerninhalt erfolgreich abgerufen werden konnte (true) oder nicht (false)
-     * @return
+     * @return Rückgabewerte des Algorithmus nach Leitners Lernkartei
      */
     public LeitnerAlgorithmResult basicLeitner(int boxId, boolean retrievalSuccessful) {
         LeitnerAlgorithm leitner = LeitnerAlgorithm.builder()

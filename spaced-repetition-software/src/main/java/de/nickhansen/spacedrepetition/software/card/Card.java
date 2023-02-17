@@ -16,7 +16,7 @@ public class Card {
     private Long created;
 
     /**
-     * Konstruktor für die Karteikarte, in dem alle übergebenen Paramter die deklarierten Klassenattribute initialiseren
+     * Konstruktor für die Karteikarte, in dem alle übergebenen Parameter die deklarierten Klassenattribute initialiseren
      * @param uuid die UUID der Karteikarte zur Identifikation
      * @param front der Vorderseitentext der Karteikarte
      * @param back der Rückseitentext der Karteikarte

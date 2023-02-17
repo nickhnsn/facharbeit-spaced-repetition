@@ -5,7 +5,7 @@ package de.nickhansen.spacedrepetition.api.algorithm.result;
  */
 public class LeitnerAlgorithmResult extends AlgorithmResult {
 
-    private int boxId, interval;
+    private int boxId;
 
     /**
      * Konstruktor für das Ergebnis des Algorithmus nach Leitners Lernkarteisystem
@@ -15,15 +15,6 @@ public class LeitnerAlgorithmResult extends AlgorithmResult {
     public LeitnerAlgorithmResult(int boxId, int interval) {
         super(interval);
         this.boxId = boxId;
-    }
-
-    /**
-     * Erhalten des neuen Intervalls, in welchem der Lerninhalt wiederholt werden soll
-     * @return neues Intervall in Tagen
-     */
-    @Override
-    public int getInterval() {
-        return this.interval;
     }
 
     /**

@@ -5,8 +5,8 @@ package de.nickhansen.spacedrepetition.api.algorithm.result;
  */
 public class SM2AlgorithmResult extends AlgorithmResult {
 
-    private int repetitions, interval;
-    float easinessFactor;
+    private int repetitions;
+    private float easinessFactor;
 
     /**
      * Konstruktor für das Ergebnis des SM-2-Algorithmus
@@ -18,15 +18,6 @@ public class SM2AlgorithmResult extends AlgorithmResult {
         super(interval);
         this.repetitions = repetitions;
         this.easinessFactor = easinessFactor;
-    }
-
-    /**
-     * Erhalten des neuen Intervalls, in welchem der Lerninhalt wiederholt werden soll
-     * @return neues Intervall in Tagen
-     */
-    @Override
-    public int getInterval() {
-        return this.interval;
     }
 
     /**

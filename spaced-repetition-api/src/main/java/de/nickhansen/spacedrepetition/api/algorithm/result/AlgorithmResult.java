@@ -31,8 +31,10 @@ public abstract class AlgorithmResult {
 
 
     /**
-     * Jede Unterklasse muss implementieren, dass das berechnete Intervall abgefragt werden kann.
+     * Erhalten des neu berechneten Wiederholungsintervalls, welches jede Unterklasse dem Konstruktor übergeben muss
      * @return neues Wiederholungsintervall für den Lerninhalt in Tagen
      */
-    public abstract int getInterval();
+    public int getInterval() {
+        return this.interval;
+    }
 }
