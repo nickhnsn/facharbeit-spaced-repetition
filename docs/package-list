@@ -1,4 +1,6 @@
 de.nickhansen.spacedrepetition.api
+de.nickhansen.spacedrepetition.api.algorithm
+de.nickhansen.spacedrepetition.api.algorithm.result
 de.nickhansen.spacedrepetition.software
 de.nickhansen.spacedrepetition.software.card
 de.nickhansen.spacedrepetition.software.database

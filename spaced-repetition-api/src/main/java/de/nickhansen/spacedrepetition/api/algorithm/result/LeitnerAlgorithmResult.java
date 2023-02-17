@@ -15,7 +15,6 @@ public class LeitnerAlgorithmResult extends AlgorithmResult {
     public LeitnerAlgorithmResult(int boxId, int interval) {
         super(interval);
         this.boxId = boxId;
-        this.interval = interval;
     }
 
     /**

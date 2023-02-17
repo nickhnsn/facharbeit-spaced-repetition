@@ -18,7 +18,6 @@ public class SM2AlgorithmResult extends AlgorithmResult {
         super(interval);
         this.repetitions = repetitions;
         this.easinessFactor = easinessFactor;
-        this.interval = interval;
     }
 
     /**
