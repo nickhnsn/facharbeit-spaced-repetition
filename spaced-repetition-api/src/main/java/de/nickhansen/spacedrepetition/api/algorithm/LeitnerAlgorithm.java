@@ -92,7 +92,7 @@ public class LeitnerAlgorithm implements Algorithm {
         }
 
         /**
-         * Baut den Leitner-Algorithmus mithilfe der zuvor durch den Builder festgelegten Paramter.
+         * Baut den Leitner-Algorithmus mithilfe der zuvor durch den Builder festgelegten Parameter.
          * @return neu gebautes LeitnerAlgorithm-Objekt
          */
         public LeitnerAlgorithm build() {

@@ -1,7 +1,11 @@
 package de.nickhansen.spacedrepetition.api;
 
+import de.nickhansen.spacedrepetition.api.algorithm.FSRSAlgorithm;
 import de.nickhansen.spacedrepetition.api.algorithm.LeitnerAlgorithm;
 import de.nickhansen.spacedrepetition.api.algorithm.SM2Algorithm;
+import de.nickhansen.spacedrepetition.api.algorithm.fsrs.FSRSRating;
+import de.nickhansen.spacedrepetition.api.algorithm.fsrs.FSRSState;
+import de.nickhansen.spacedrepetition.api.algorithm.result.FSRSAlgorithmResult;
 import de.nickhansen.spacedrepetition.api.algorithm.result.LeitnerAlgorithmResult;
 import de.nickhansen.spacedrepetition.api.algorithm.result.SM2AlgorithmResult;
 
@@ -17,6 +21,21 @@ public class SpacedRepetitionAPI {
      */
     protected SpacedRepetitionAPI() {
         instance = this;
+    }
+
+    /**
+     * Beispiel zur Verwendung des implementierten Algorithmus nach Leitners Lernkartei.
+     * @param boxId bisherige Nummer des Fachs für den Inhalt
+     * @param retrievalSuccessful Wahrheitswert, der angibt, ob der Lerninhalt erfolgreich abgerufen werden konnte (true) oder nicht (false)
+     * @return Rückgabewerte des Algorithmus nach Leitners Lernkartei
+     */
+    public LeitnerAlgorithmResult basicLeitner(int boxId, boolean retrievalSuccessful) {
+        LeitnerAlgorithm leitner = LeitnerAlgorithm.builder()
+                .boxId(boxId)
+                .retrievalSuccessful(retrievalSuccessful)
+                .build();
+
+        return leitner.calc();
     }
 
     /**
@@ -39,18 +58,32 @@ public class SpacedRepetitionAPI {
     }
 
     /**
-     * Beispiel zur Verwendung des implementierten Algorithmus nach Leitners Lernkartei.
-     * @param boxId bisherige Nummer des Fachs für den Inhalt
-     * @param retrievalSuccessful Wahrheitswert, der angibt, ob der Lerninhalt erfolgreich abgerufen werden konnte (true) oder nicht (false)
-     * @return Rückgabewerte des Algorithmus nach Leitners Lernkartei
+     * Beispiel zur Verwendung des implementierten Free Spaced Repetition Scheduler Algorithmus mit dem Builder.
+     * @param rating die Bewertung des Abrufens des Lerninhalts
+     * @param dueTime die nächste fällige Wiederholung bzw. nächster Wiederholungszeitpunkt
+     * @param stability die Stabilität des Lerninhalts
+     * @param difficulty die Schwierigkeit des Lerninhalts
+     * @param elapsedDays die ausgesetzten Tage zwischen letzter und nächster Wiederholung
+     * @param scheduledDays die berechneten Tage zur nächsten Wiederholung
+     * @param repetitions die bisherige Anzahl an Wiederholungen
+     * @param state der Status des Lerninhalts
+     * @param lastReview der letzte Zeitpunkt des Abfragens des Lerninhalts
+     * @return Rückgabewerte des Free Spaced Repetition Scheduler Algorithmus
      */
-    public LeitnerAlgorithmResult basicLeitner(int boxId, boolean retrievalSuccessful) {
-        LeitnerAlgorithm leitner = LeitnerAlgorithm.builder()
-                .boxId(boxId)
-                .retrievalSuccessful(retrievalSuccessful)
+    public FSRSAlgorithmResult basicFSRS(FSRSRating rating, long dueTime, float stability, float difficulty, int elapsedDays, int scheduledDays, int repetitions, FSRSState state, long lastReview) {
+        FSRSAlgorithm fsrs = FSRSAlgorithm.builder()
+                .rating(rating)
+                .dueTime(dueTime)
+                .stability(stability)
+                .difficulty(difficulty)
+                .elapsedDays(elapsedDays)
+                .scheduledDays(scheduledDays)
+                .repetitions(repetitions)
+                .state(state)
+                .lastReview(lastReview)
                 .build();
 
-        return leitner.calc();
+        return fsrs.calc();
     }
 
     /**
