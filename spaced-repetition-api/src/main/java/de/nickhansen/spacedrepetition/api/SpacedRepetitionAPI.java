@@ -1,6 +1,8 @@
 package de.nickhansen.spacedrepetition.api;
 
+import de.nickhansen.spacedrepetition.api.algorithm.LeitnerAlgorithm;
 import de.nickhansen.spacedrepetition.api.algorithm.SM2Algorithm;
+import de.nickhansen.spacedrepetition.api.algorithm.result.LeitnerAlgorithmResult;
 import de.nickhansen.spacedrepetition.api.algorithm.result.SM2AlgorithmResult;
 
 /**
@@ -32,7 +34,23 @@ public class SpacedRepetitionAPI {
                 .easinessFactor(easinessFactor)
                 .interval(interval)
                 .build();
+
         return sm2.calc();
+    }
+
+    /**
+     * Beispiel zur Verwendung des implementierten Algorithmus nach Leitners Lernkartei.
+     * @param boxId bisherige Nummer des Fachs für den Inhalt
+     * @param retrievalSuccessful Wahrheitswert, der angibt, ob der Lerninhalt erfolgreich abgerufen werden konnte (true) oder nicht (false)
+     * @return
+     */
+    public LeitnerAlgorithmResult basicLeitner(int boxId, boolean retrievalSuccessful) {
+        LeitnerAlgorithm leitner = LeitnerAlgorithm.builder()
+                .boxId(boxId)
+                .retrievalSuccessful(retrievalSuccessful)
+                .build();
+
+        return leitner.calc();
     }
 
     /**

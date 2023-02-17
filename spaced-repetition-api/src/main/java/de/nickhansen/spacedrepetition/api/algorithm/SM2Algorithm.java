@@ -119,7 +119,7 @@ public class SM2Algorithm implements Algorithm {
 
         /**
          * Baut den SM-2-Algorithmus mithilfe der zuvor durch den Builder festgelegten Paramter.
-         * @return neu erzeugte Instanz der statischen Klasse SM2AlgorithmBuilder
+         * @return neu gebautes SM2Algorithm-Objekt
          */
         public SM2Algorithm build() {
             return new SM2Algorithm(this);

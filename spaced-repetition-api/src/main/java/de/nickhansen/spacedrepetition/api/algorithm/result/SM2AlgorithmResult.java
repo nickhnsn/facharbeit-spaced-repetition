@@ -10,9 +10,9 @@ public class SM2AlgorithmResult extends AlgorithmResult {
 
     /**
      * Konstruktor für das Ergebnis des SM-2-Algorithmus
-     * @param repetitions bisherige Anzahl an Wiederholungen
-     * @param easinessFactor bisheriger Leichtigkeitsfaktor (sollte zwischen 1,3 und 2,5 sein)
-     * @param interval bisheriges Intervall, in welchem der Lerninhalt wiederholt wurde
+     * @param repetitions neue Anzahl an Wiederholungen
+     * @param easinessFactor neuer Leichtigkeitsfaktor (sollte zwischen 1,3 und 2,5 sein)
+     * @param interval neues Intervall, in welchem der Lerninhalt wiederholt wurde
      */
     public SM2AlgorithmResult(int repetitions, float easinessFactor, int interval) {
         super(interval);
@@ -22,8 +22,8 @@ public class SM2AlgorithmResult extends AlgorithmResult {
     }
 
     /**
-     * Erhalten des vorherigen Intervalls, in welchem der Lerninhalt wiederholtwurde
-     * @return vorheriges Intervall in Tagen
+     * Erhalten des neuen Intervalls, in welchem der Lerninhalt wiederholt werden soll
+     * @return neues Intervall in Tagen
      */
     @Override
     public int getInterval() {
@@ -31,16 +31,16 @@ public class SM2AlgorithmResult extends AlgorithmResult {
     }
 
     /**
-     * Erhalten der bisherigen Anzahl an Wiederholungen des Lerninhalts.
-     * @return Anzahl an Wiederholungen
+     * Erhalten der neuen Anzahl an Wiederholungen des Lerninhalts
+     * @return aktualisierte Anzahl an Wiederholungen
      */
     public int getRepetitions() {
         return this.repetitions;
     }
 
     /**
-     * Erhalten des bisherigen Leichtigkeitsfaktors für den Lerninhalt
-     * @return Leichtigkeitsfaktor EF (2,5 ≥ EF ≥ 1,3)
+     * Erhalten des neuen Leichtigkeitsfaktors für den Lerninhalt
+     * @return neuer Leichtigkeitsfaktor EF (2,5 ≥ EF ≥ 1,3)
      */
     public float getEasinessFactor() {
         return this.easinessFactor;
