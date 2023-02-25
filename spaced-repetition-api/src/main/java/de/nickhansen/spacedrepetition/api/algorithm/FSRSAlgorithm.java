@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
  * Implementation des Free Spaced Repetition Scheduler Algorithmus
  * siehe https://github.com/open-spaced-repetition/fsrs4anki/wiki/Free-Spaced-Repetition-Scheduler
  * implementiert nach https://github.com/open-spaced-repetition/py-fsrs/blob/2f178564e805c5bfdf8501d8ef516723187266dd/src/fsrs/fsrs
+ *       (MIT LICENSE, Copyright (c) 2022 Open Spaced Repetition)
  */
 public class FSRSAlgorithm implements Algorithm {
 
@@ -23,7 +24,7 @@ public class FSRSAlgorithm implements Algorithm {
 
     private FSRSRating rating;
     private SchedulingCard card;
-    private long dueTime, lastReview;
+    private long lastReview;
     private float stability, difficulty;
     private int elapsedDays, scheduledDays, repetitions;
     private FSRSState state;
@@ -44,7 +45,6 @@ public class FSRSAlgorithm implements Algorithm {
      */
     public FSRSAlgorithm(FSRSAlgorithmBuilder builder) {
         this.rating = builder.rating;
-        this.dueTime = builder.dueTime;
         this.lastReview = builder.lastReview;
         this.stability = builder.stability;
         this.difficulty = builder.difficulty;
@@ -56,22 +56,23 @@ public class FSRSAlgorithm implements Algorithm {
 
     /**
      * Der Free Spaced Repetition Scheduler Algorithmus.
-     * Berechnet aus den Inputs rating, dueTime, lastReview, stability, difficulty, elapsedDays, scheduledDays, repetitions und state
+     * Berechnet aus den Inputs rating, lastReview, stability, difficulty, elapsedDays, scheduledDays, repetitions und state
      * die Outputs dueTime, lastReview, stability, difficulty, elapsedDays, scheduledDays, repetitions und state
      * @return Free Spaced Repetition Scheduler Algorithmus mit den berechneten Rückgabewerten
      */
     @Override
     public FSRSAlgorithmResult calc() {
-        this.card = new SchedulingCard(this.dueTime, this.stability, this.difficulty, this.elapsedDays, this.scheduledDays, this.repetitions, this.state, this.lastReview);
+        this.card = new SchedulingCard(System.currentTimeMillis(), this.stability, this.difficulty, this.elapsedDays, this.scheduledDays, this.repetitions, this.state, this.lastReview);
+        // Für jedes Ranking-Enum eine Karte mit Standard-Parametern erstellen
+        for (FSRSRating rating : FSRSRating.values()) {
+            this.card.getRatingToCard().put(rating, new SchedulingCard(System.currentTimeMillis(), 0, 0, 0, 0, 0,  FSRSState.NEW, 0));
+        }
 
         if (this.card.getState() == FSRSState.NEW) {
             this.card.setElapsedDays(0);
         } else {
             this.card.setElapsedDays((int) (TimeUnit.MILLISECONDS.toDays(this.card.getDueTime() - this.card.getLastReview())));
         }
-
-        this.card.setLastReview(this.card.getDueTime());
-        this.card.setRepetitions(this.card.getRepetitions() + 1);
 
         this.card.updateState();
 
@@ -90,14 +91,14 @@ public class FSRSAlgorithm implements Algorithm {
             this.card.getRatingToCard().get(FSRSRating.EASY).setDueTime(this.card.getDueTime() + TimeUnit.DAYS.toMillis(easyInterval));
 
         // Für Karten, die (neu-)gelernt werden
-        } else if(this.card.getState()  == FSRSState.LEARNING || this.card.getState()  == FSRSState.RELEARNING) {
+        } else if (this.card.getState()  == FSRSState.LEARNING || this.card.getState()  == FSRSState.RELEARNING) {
             hardInterval = this.nextInterval(this.card.getRatingToCard().get(FSRSRating.HARD).getStability());
             goodInterval = Math.max(this.nextInterval(this.card.getRatingToCard().get(FSRSRating.GOOD).getStability()), hardInterval + 1);
             easyInterval = Math.max(this.nextInterval(this.card.getRatingToCard().get(FSRSRating.EASY).getStability() * EASY_BONUS), goodInterval + 1);
             this.card.schedule(hardInterval, goodInterval, easyInterval);
 
         // Für zu abrufende Karten
-        } else if(this.card.getState()  == FSRSState.REVIEW) {
+        } else if (this.card.getState()  == FSRSState.REVIEW) {
             int interval = this.card.getElapsedDays();
             float lastDifficulty = this.card.getDifficulty();
             float lastStability = this.card.getStability();
@@ -114,6 +115,10 @@ public class FSRSAlgorithm implements Algorithm {
         }
 
         SchedulingCard newCard = this.card.getRatingToCard().get(this.rating);
+        newCard.setLastReview(System.currentTimeMillis());
+        newCard.setRepetitions(this.card.getRepetitions() + 1);
+        newCard.setElapsedDays(this.card.getElapsedDays());
+        newCard.setScheduledDays(this.card.getScheduledDays());
         return new FSRSAlgorithmResult(newCard);
     }
 
@@ -218,7 +223,7 @@ public class FSRSAlgorithm implements Algorithm {
     public static class FSRSAlgorithmBuilder {
 
         private FSRSRating rating = FSRSRating.AGAIN;
-        private long dueTime = 0, lastReview = 0;
+        private long lastReview = 0;
         private float stability = 0, difficulty = 0;
         private int elapsedDays = 0, scheduledDays = 0, repetitions = 0;
         private FSRSState state = FSRSState.NEW;
@@ -230,16 +235,6 @@ public class FSRSAlgorithm implements Algorithm {
          */
         public FSRSAlgorithmBuilder rating(FSRSRating rating) {
             this.rating = rating;
-            return this;
-        }
-
-        /**
-         * Setzen des nächsten Wiederholungszeitpunkts
-         * @param dueTime der nächste Wiederholungszeitpunkt in Millisekunden
-         * @return neu erzeugte Instanz der statischen Klasse FSRSAlgorithmBuilder
-         */
-        public FSRSAlgorithmBuilder dueTime(long dueTime) {
-            this.dueTime = dueTime;
             return this;
         }
 

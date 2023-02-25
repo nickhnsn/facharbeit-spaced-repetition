@@ -1,5 +1,6 @@
 package de.nickhansen.spacedrepetition.software.listener;
 
+import de.nickhansen.spacedrepetition.software.SpacedRepetitionApp;
 import de.nickhansen.spacedrepetition.software.card.Card;
 
 import javax.swing.*;
@@ -31,5 +32,9 @@ public class CardDeletionListener implements ActionListener {
 
         // Delete table row
         ((DefaultTableModel) table.getModel()).removeRow(modelRow);
+
+        // Gelöschte Karteikarten aus dem CardScheduler entfernen
+        SpacedRepetitionApp.getInstance().getCardScheduler().queueDueCards();
+        SpacedRepetitionApp.getInstance().getCardScheduler().updateGUI();
     }
 }

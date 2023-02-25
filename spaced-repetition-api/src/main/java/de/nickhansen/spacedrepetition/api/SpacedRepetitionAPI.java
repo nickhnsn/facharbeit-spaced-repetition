@@ -60,7 +60,6 @@ public class SpacedRepetitionAPI {
     /**
      * Beispiel zur Verwendung des implementierten Free Spaced Repetition Scheduler Algorithmus mit dem Builder.
      * @param rating die Bewertung des Abrufens des Lerninhalts
-     * @param dueTime die nächste fällige Wiederholung bzw. nächster Wiederholungszeitpunkt
      * @param stability die Stabilität des Lerninhalts
      * @param difficulty die Schwierigkeit des Lerninhalts
      * @param elapsedDays die ausgesetzten Tage zwischen letzter und nächster Wiederholung
@@ -70,10 +69,9 @@ public class SpacedRepetitionAPI {
      * @param lastReview der letzte Zeitpunkt des Abfragens des Lerninhalts
      * @return Rückgabewerte des Free Spaced Repetition Scheduler Algorithmus
      */
-    public FSRSAlgorithmResult basicFSRS(FSRSRating rating, long dueTime, float stability, float difficulty, int elapsedDays, int scheduledDays, int repetitions, FSRSState state, long lastReview) {
+    public FSRSAlgorithmResult basicFSRS(FSRSRating rating, float stability, float difficulty, int elapsedDays, int scheduledDays, int repetitions, FSRSState state, long lastReview) {
         FSRSAlgorithm fsrs = FSRSAlgorithm.builder()
                 .rating(rating)
-                .dueTime(dueTime)
                 .stability(stability)
                 .difficulty(difficulty)
                 .elapsedDays(elapsedDays)

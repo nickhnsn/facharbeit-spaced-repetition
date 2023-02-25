@@ -32,7 +32,6 @@ public class FSRSAlgorithmResult extends AlgorithmResult {
      * Berechnung des Zeitpunkts der nächsten notwendigen Wiederholung in Millisekunden
      * @return Zeitpunkt in Millisekunden, an welchem die nächste Wiederholung stattfinden soll
      */
-    @Override
     public long getNextRepetitionTime() {
         return this.dueTime;
     }
@@ -74,7 +73,7 @@ public class FSRSAlgorithmResult extends AlgorithmResult {
      * @return der Abfragezeitpunkt in Millisekunden
      */
     public long getLastReview() {
-        return lastReview;
+        return this.lastReview;
     }
 
     /**

@@ -1,10 +1,15 @@
 package de.nickhansen.spacedrepetition.software.gui.view;
 
+import de.nickhansen.spacedrepetition.software.listener.AlgorithmSelectionListener;
+import de.nickhansen.spacedrepetition.software.listener.CardRatingListener;
+import de.nickhansen.spacedrepetition.software.listener.LearnUpdateListener;
+import de.nickhansen.spacedrepetition.software.util.AlgorithmType;
 import info.clearthought.layout.TableLayout;
 import info.clearthought.layout.TableLayoutConstraints;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
 
 /**
  * LearnView als Tab der MainView:
@@ -14,7 +19,9 @@ public class LearnView extends JPanel {
 
     private JLabel algorithmLabel, chosenCardLabel, frontLabel, backLabel, divideLabel, frontDataLabel, backDataLabel;
     private JComboBox comboBox;
-    private JButton againButton, hardButton, okayButton, goodButton, easyButton;
+    private JButton updateButton;
+    private JButton[] buttons;
+    private JPanel buttonPanel;
 
     /**
      * Konstruktur für die LearnView, indem das Panel erzeugt wird, welches den Tab der MainView darstellt.
@@ -34,9 +41,18 @@ public class LearnView extends JPanel {
         this.algorithmLabel.setFont(this.algorithmLabel.getFont().deriveFont(this.algorithmLabel.getFont().getStyle() | Font.BOLD));
         add(this.algorithmLabel, new TableLayoutConstraints(0, 0, 0, 0, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
 
-        String comboBoxList[] = {"Neuronales Netz", "Leitner-System", "SuperMemo-Algorithmus"};
+
+        String comboBoxList[] = Arrays.stream(AlgorithmType.values()).map(Enum::name).toArray(String[]::new);
         this.comboBox = new JComboBox(comboBoxList);
+        this.comboBox.addItemListener(new AlgorithmSelectionListener());
         add(this.comboBox, new TableLayoutConstraints(0, 1, 0, 1, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
+
+        //---- Aktualisierungsbutton ----
+        this.updateButton = new JButton();
+        this.updateButton.setText("Aktualisieren");
+        this.updateButton.addActionListener(new LearnUpdateListener());
+        this.updateButton.setVisible(false);
+        add(this.updateButton, new TableLayoutConstraints(1, 1, 1, 1, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
 
         //---- Präsentieren der Karteikarte mit ihrer Vorder- & Rückseite ----
         this.chosenCardLabel = new JLabel();
@@ -71,38 +87,40 @@ public class LearnView extends JPanel {
 
         //======== Buttons, um zu bewerten, wie gut man die Karteikarte konnte ========
         // Dafür wird ein neues Panel mit einem eigenen TableLayout erzeugt, welches in das vorherige Panel eingefügt wird.
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new TableLayout(new double[][] {
-                {100, 100, 100, 100, 100},
+        this.buttonPanel = new JPanel();
+        add(this.buttonPanel, new TableLayoutConstraints(1, 10, 1, 10, TableLayoutConstraints.CENTER, TableLayoutConstraints.FULL));
+    }
+
+    public void updateButtonPanel(int buttons) {
+        this.buttons = new JButton[buttons];
+        this.buttonPanel.removeAll();
+
+        // Berechnen der Tabellengröße je nach Buttonanzahl
+        double[] layout = new double[buttons];
+        for (int i = 0; i < buttons; i++) {
+            layout[i] = (double) 500 / buttons;
+        }
+
+        this.buttonPanel.setLayout(new TableLayout(new double[][] {
+                layout,
                 {TableLayout.PREFERRED}}));
-        ((TableLayout) buttonPanel.getLayout()).setHGap(5);
-        ((TableLayout) buttonPanel.getLayout()).setVGap(5);
+        ((TableLayout) this.buttonPanel.getLayout()).setHGap(5);
+        ((TableLayout) this.buttonPanel.getLayout()).setVGap(5);
 
-        this.againButton = new JButton();
-        this.againButton.setText("Nochmal");
-        buttonPanel.add(this.againButton, new TableLayoutConstraints(0, 0, 0, 0, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
+        for (int i = 0; i < buttons; i++) {
+            this.buttons[i] = new JButton();
+            this.buttons[i].setText(String.valueOf(i));
+            this.buttons[i].addActionListener(new CardRatingListener());
 
-        this.hardButton = new JButton();
-        this.hardButton.setText("Schwer");
-        this.hardButton.setForeground(Color.red);
-        buttonPanel.add(this.hardButton, new TableLayoutConstraints(1, 0, 1, 0, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
+            if (i == 0) {
+                this.buttons[i].setForeground(Color.red);
+            } else if (i == buttons-1) {
+                this.buttons[i].setForeground(Color.green);
+            }
 
-        this.okayButton = new JButton();
-        this.okayButton.setText("Okay");
-        this.okayButton.setForeground(Color.orange);
-        buttonPanel.add(this.okayButton, new TableLayoutConstraints(2, 0, 2, 0, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
-
-        this.goodButton = new JButton();
-        this.goodButton.setText("Gut");
-        this.goodButton.setForeground(Color.green);
-        buttonPanel.add(this.goodButton, new TableLayoutConstraints(3, 0, 3, 0, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
-
-        this.easyButton = new JButton();
-        this.easyButton.setText("Einfach");
-        this.easyButton.setForeground(Color.blue);
-        buttonPanel.add(this.easyButton, new TableLayoutConstraints(4, 0, 4, 0, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
-
-        add(buttonPanel, new TableLayoutConstraints(1, 10, 1, 10, TableLayoutConstraints.CENTER, TableLayoutConstraints.FULL));
+            this.buttonPanel.add(this.buttons[i], new TableLayoutConstraints(i, 0, i, 0, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
+        }
+        this.buttonPanel.updateUI();
     }
 
     /**
@@ -119,5 +137,29 @@ public class LearnView extends JPanel {
      */
     public JLabel getBackDataLabel() {
         return this.backDataLabel;
+    }
+
+    /**
+     * Erhalten des Buttons, durch welchen das Panel aktualisiert werden kann
+     * @return der Aktualisierungsbutton
+     */
+    public JButton getUpdateButton() {
+        return this.updateButton;
+    }
+
+    /**
+     * Erhalten der ComboBox, in welcher der genutzte Algorithmus ausgewählt werden kann
+     * @return die ComboBox
+     */
+    public JComboBox getComboBox() {
+        return this.comboBox;
+    }
+
+    /**
+     * Erhalten aller Buttons, die zur Bewertung der Karteikarten genutzt werden
+     * @return die Buttons als Array
+     */
+    public JButton[] getButtons() {
+        return this.buttons;
     }
 }

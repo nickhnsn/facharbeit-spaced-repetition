@@ -1,9 +1,11 @@
 package de.nickhansen.spacedrepetition.software.database;
 
 import java.sql.*;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 /**
  * MySQL-Datenbankklasse, die die Verbindung zur Datenbank herstellt und verschiedene Aktionen (Updates, Queries, ...) ermöglicht
@@ -75,6 +77,15 @@ public class MySQL {
     }
 
     /**
+     * Synchrones Aktualisieren der Datenbank durch ein Statement in Form eines Strings
+     * @param statement das Statement
+     */
+    public void syncUpdate(String statement) {
+        checkConnection();
+        this.queryUpdate(statement);
+    }
+
+    /**
      * Query in der Datenbank ausführen
      * @param statement das PreparedStatement
      * @param consumer  der Consumer mit einem ResultSet
@@ -99,6 +110,17 @@ public class MySQL {
             consumer.accept(result);
         });
     }
+
+    /**
+     * Query in der Datenbank synchron ausführen
+     * @param statement das Statement in Form eines Strings
+     * @param consumer  der Consumer
+     */
+    public void syncQuery(String statement, Consumer<ResultSet> consumer) {
+        ResultSet result = this.query(statement);
+        consumer.accept(result);
+    }
+
 
     /**
      * Vorbereiten eines PreparedStatements

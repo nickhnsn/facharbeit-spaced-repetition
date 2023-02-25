@@ -45,6 +45,10 @@ public class CardCreationListener implements ActionListener {
 
                 // Tabelle der ManageView aktualisieren, in der alle erstellten Karteikarten aufgeführt werden
                 manageView.updateTable();
+
+                // Neue Karteikarten zum CardScheduler hinzufügen
+                SpacedRepetitionApp.getInstance().getCardScheduler().queueDueCards();
+                SpacedRepetitionApp.getInstance().getCardScheduler().updateGUI();
             } else {
                 // Fehlermeldung, wenn Textfelder für Vorder- und Rückseite leer sind
                 JOptionPane.showMessageDialog(manageView, "Der Text auf der Vorder- und Rückseite der Karteikarte muss mindestens 1 Zeichen lang sein");

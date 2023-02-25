@@ -38,7 +38,18 @@ public class DatabaseAdapter {
         Vorder- und Rückseitentext der Karteikarte auf 100 Zeichen limitiert; UUIDs sind immer 36 Zeichen lang; Erstellungszeitpunkt wird in Millisekunden gespeichert.
         Dabei wird die UUID als Primärschlüssel festgelegt, da sich mit der UUID die Zeile eindeutig identifizieren lässt. Jede Karteikarte benötigt eine UUID, daher darf diese nicht null sein.
          */
-        this.mySQL.queryUpdate("CREATE TABLE IF NOT EXISTS cards (uuid VARCHAR(36) NOT NULL, front VARCHAR(100), back VARCHAR(100), created bigint, PRIMARY KEY (uuid))");
+        this.mySQL.queryUpdate("CREATE TABLE IF NOT EXISTS cards (card_uuid VARCHAR(36) NOT NULL, front VARCHAR(100), back VARCHAR(100), created BIGINT, PRIMARY KEY (card_uuid))");
+
+        // ==== Pro Algorithmus eine eigene Tabelle mit algorithmusspezifischen Daten ====
+
+        // Leitner-Algorithmus
+        this.mySQL.queryUpdate("CREATE TABLE IF NOT EXISTS leitner (card_uuid VARCHAR(36) NOT NULL, box_id INT DEFAULT 1, day_interval INT DEFAULT 0, next_repetition BIGINT DEFAULT 0, PRIMARY KEY (card_uuid))");
+
+        // SM-2-Algorithmus
+        this.mySQL.queryUpdate("CREATE TABLE IF NOT EXISTS sm2 (card_uuid VARCHAR(36) NOT NULL, repetitions INT DEFAULT 0, easiness_factor FLOAT DEFAULT 2.5, day_interval INT DEFAULT 0, next_repetition BIGINT DEFAULT 0, PRIMARY KEY (card_uuid))");
+
+         // FSRS-Algorithmus
+        this.mySQL.queryUpdate("CREATE TABLE IF NOT EXISTS fsrs (card_uuid VARCHAR(36) NOT NULL, stability FLOAT DEFAULT 0, difficulty FLOAT DEFAULT 0, elapsed_days INT DEFAULT 0, repetitions INT DEFAULT 0, state TEXT DEFAULT 'NEW', day_interval INT DEFAULT 0, next_repetition BIGINT DEFAULT 0, last_review BIGINT DEFAULT 0, PRIMARY KEY (card_uuid))");
     }
 
     /**

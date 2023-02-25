@@ -5,7 +5,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Modell der SchedulingCard
- * implementiert nach https://github.com/open-spaced-repetition/py-fsrs/blob/2f178564e805c5bfdf8501d8ef516723187266dd/src/fsrs/models.py.
+ * implementiert nach https://github.com/open-spaced-repetition/py-fsrs/blob/2f178564e805c5bfdf8501d8ef516723187266dd/src/fsrs/models.py
+ *                    (MIT LICENSE, Copyright (c) 2022 Open Spaced Repetition).
  */
 public class SchedulingCard {
 
@@ -38,10 +39,6 @@ public class SchedulingCard {
         this.lastReview = lastReview;
 
         this.ratingToCard = new HashMap<>();
-        // Für jedes Ranking-Enum eine Karte mit Standard-Parametern erstellen
-        for (FSRSRating rating : FSRSRating.values()) {
-            this.ratingToCard.put(rating, new SchedulingCard(System.currentTimeMillis(), 0, 0, 0, 0, 0,  FSRSState.NEW, 0));
-        }
     }
 
     /**
@@ -140,7 +137,7 @@ public class SchedulingCard {
      * @return der Abfragezeitpunkt in Millisekunden
      */
     public long getLastReview() {
-        return lastReview;
+        return this.lastReview;
     }
 
     /**

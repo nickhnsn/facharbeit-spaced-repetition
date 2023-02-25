@@ -1,6 +1,7 @@
 package de.nickhansen.spacedrepetition.software.card;
 
 import de.nickhansen.spacedrepetition.software.SpacedRepetitionApp;
+import de.nickhansen.spacedrepetition.software.util.AlgorithmType;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -42,7 +43,7 @@ public class Card {
 
         // Karteikarte in der Datenbank erstellen
         try {
-            PreparedStatement ps = SpacedRepetitionApp.getInstance().getDatabaseAdapter().getMySQL().prepare("INSERT INTO cards (uuid, front, back, created) VALUES (?, ?, ?, ?)");
+            PreparedStatement ps = SpacedRepetitionApp.getInstance().getDatabaseAdapter().getMySQL().prepare("INSERT INTO cards (card_uuid, front, back, created) VALUES (?, ?, ?, ?)");
             ps.setString(1, uuid.toString());
             ps.setString(2, front);
             ps.setString(3, back);
@@ -51,6 +52,11 @@ public class Card {
             System.out.println("[Cards] Sucessfully inserted card " + uuid + " into database");
         } catch (SQLException e) {
             System.out.println("[Cards] Failed inserting the card " + uuid + " into database: " + e);
+        }
+
+        // Karteikarte in jeder Datenbanktabelle für die Algorithmen erstellen
+        for (AlgorithmType type : AlgorithmType.values()) {
+            SpacedRepetitionApp.getInstance().getDatabaseAdapter().getMySQL().update("INSERT INTO " + type.getDatabaseTable() + " (card_uuid) VALUES ('" + uuid + "')");
         }
 
         // Karteikarten-Objekt erstellen
@@ -62,8 +68,14 @@ public class Card {
      * Löschen einer Karteikarte, indem es aus der Datenbank und der HashMap "cards" in der SpacedRepetitionApp gelöscht wird
      */
     public void delete() {
-        SpacedRepetitionApp.getInstance().getDatabaseAdapter().getMySQL().update("DELETE FROM cards WHERE uuid='" + this.uuid + "'");
+        SpacedRepetitionApp.getInstance().getDatabaseAdapter().getMySQL().update("DELETE FROM cards WHERE card_uuid = '" + this.uuid + "'");
         SpacedRepetitionApp.getInstance().getCards().remove(this.uuid, this);
+
+        // Karteikarte in jeder Datenbanktabelle für die Algorithmen löschen
+        for (AlgorithmType type : AlgorithmType.values()) {
+            SpacedRepetitionApp.getInstance().getDatabaseAdapter().getMySQL().syncUpdate("DELETE FROM " + type.getDatabaseTable() + " WHERE card_uuid = '" + this.uuid + "'");
+        }
+
         System.out.println("[Cards] Sucessfully deleted card " + this.uuid);
     }
 
@@ -97,7 +109,7 @@ public class Card {
      * Erhalten der UUID der Karteikarte
      * @return die UUID
      */
-    public UUID getUuid() {
+    public UUID getUUID() {
         return this.uuid;
     }
 

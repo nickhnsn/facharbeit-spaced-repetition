@@ -47,7 +47,7 @@ public class SM2Algorithm implements Algorithm {
         float newEasinessFactor;
 
         // Durch Math.max(...) wird die Begrenzung von EF berücksichtigt: 2,5 ≥ EF ≥ 1,3
-        newEasinessFactor = (float) Math.max(1.3, easinessFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)));
+        newEasinessFactor = (float) Math.max(1.3, Math.max(easinessFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)), 2.5));
 
         // Berücksichtigung der Begrenzung von der Qualität 0 ≤ q ≤ 5
         if (quality > 5) {

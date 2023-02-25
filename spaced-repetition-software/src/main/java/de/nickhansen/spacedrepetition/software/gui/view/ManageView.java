@@ -70,7 +70,7 @@ public class ManageView extends JPanel {
         this.overviewLabel.setFont(this.overviewLabel.getFont().deriveFont(this.overviewLabel.getFont().getStyle() | Font.BOLD));
         add(this.overviewLabel, new TableLayoutConstraints(0, 5, 0, 5, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
 
-        //---- Erzeugen der Tabelle, in der alle erstellen Karteikarten aufgeführt werden ----
+        //---- Erzeugen der Tabelle, in der alle erstellten Karteikarten aufgeführt werden ----
         this.scrollPane = new JScrollPane();
         this.table = new JTable();
         this.table.setModel(getTableModel());
@@ -121,7 +121,7 @@ public class ManageView extends JPanel {
             data[i][0] = card.getFront();
             data[i][1] = card.getBack();
             data[i][2] = new Date(card.getCreated());
-            data[i][3] = card.getUuid();
+            data[i][3] = card.getUUID();
             data[i][4] = "Löschen";
             i++;
         }
