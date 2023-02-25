@@ -2,14 +2,17 @@ package de.nickhansen.spacedrepetition.api.algorithm.result;
 
 /**
  * Abstraktes Klassenmodell für die berechneten Rückgaben von verschiedenen Algorithmen
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
-public abstract class AlgorithmResult {
+public class AlgorithmResult {
 
     private int interval;
 
     /**
-     * Konstruktor für die abstrakte Klasse AlgorithmResult.
-     * Jeder implementierte Algorithmus muss mindestens ein neues Intervall zurückgeben.
+     * Konstruktor für die Klasse AlgorithmResult.
+     * Jeder implementierte Algorithmus muss dem Konstruktor mindestens ein neues Intervall übergeben.
      * @param interval neues Wiederholungsintervall für den Lerninhalt in Tagen
      */
     public AlgorithmResult(int interval) {

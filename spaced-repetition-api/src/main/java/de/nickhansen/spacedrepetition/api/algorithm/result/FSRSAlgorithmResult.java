@@ -5,6 +5,9 @@ import de.nickhansen.spacedrepetition.api.algorithm.fsrs.SchedulingCard;
 
 /**
  * Berechnete Rückgaben für den Free Spaced Repetition Scheduler Algorithmus
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class FSRSAlgorithmResult extends AlgorithmResult {
 

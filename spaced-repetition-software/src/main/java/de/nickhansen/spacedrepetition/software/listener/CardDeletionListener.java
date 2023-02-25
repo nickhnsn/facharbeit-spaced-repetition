@@ -11,6 +11,9 @@ import java.util.UUID;
 
 /**
  * Löschen einer Karteikarte über das GUI
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class CardDeletionListener implements ActionListener {
 

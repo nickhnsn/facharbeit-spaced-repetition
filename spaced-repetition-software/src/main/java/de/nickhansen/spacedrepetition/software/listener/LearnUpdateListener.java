@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 
 /**
  * Aktualisieren des GUIs durch den Aktualisierungsbutton der LearnView
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class LearnUpdateListener implements ActionListener {
 

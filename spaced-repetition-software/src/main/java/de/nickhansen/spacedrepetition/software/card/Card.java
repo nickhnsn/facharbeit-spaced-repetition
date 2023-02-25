@@ -9,6 +9,9 @@ import java.util.UUID;
 
 /**
  * Diese Klasse modelliert eine Karteikarte.
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class Card {
 

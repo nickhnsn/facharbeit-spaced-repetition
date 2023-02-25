@@ -8,6 +8,9 @@ import java.awt.event.WindowEvent;
 /**
  * Hauptklasse für die grafische Benutzeroberfläche, durch die u. a. das Hauptfenster erzeugt wird:
  * Die MainView erzeugt die zwei Tabs, die in dem Fenster existieren, nämlich die LearnView und die ManageView.
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class MainView extends JFrame {
 

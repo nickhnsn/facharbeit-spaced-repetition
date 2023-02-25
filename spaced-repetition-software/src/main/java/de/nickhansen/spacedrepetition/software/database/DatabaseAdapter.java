@@ -6,6 +6,9 @@ import de.nickhansen.spacedrepetition.software.SpacedRepetitionApp;
  * Der DatabaseAdapter interagiert mit der MySQl-Datenbank.
  * Durch diese Klasse werden die Daten für die Datenbank an das MySQL-Objekt weitergegeben.
  * Außerdem werden alle für die Applikation notwendigen Tabellen in der Datenbank angelegt, falls das noch nicht der Fall ist.
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class DatabaseAdapter {
 

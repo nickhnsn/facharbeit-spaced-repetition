@@ -4,6 +4,9 @@ package de.nickhansen.spacedrepetition.software;
  * Hauptklasse der Applikation, die den Launcher darstellt.
  * Der Launcher startet die Applikation, indem die Klasse SpacedRepetitionApp instanziiert wird.
  * In dem Konstruktur der SpacedRepetitionApp Klasse geschieht das Hauptsächliche zum Starten der Applikation.
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class SpacedRepetitionLauncher {
 

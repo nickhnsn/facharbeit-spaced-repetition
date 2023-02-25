@@ -23,6 +23,8 @@ import javax.swing.table.*;
  *  source of the Action will be the table. The action command will contain
  *  the model row number of the button that was clicked.
  *
+ * @author Rob Camick
+ * @version 12.07.2009
  */
 public class ButtonColumn extends AbstractCellEditor implements TableCellRenderer, TableCellEditor, ActionListener, MouseListener {
     private JTable table;

@@ -17,6 +17,9 @@ import java.util.UUID;
  * Die Klasse dient als „Zentrale“ der Applikation. Über die Instanz der Klasse kann auf wichtige Programmklassen zugegriffen werden,
  * d. h. auf die Hauptklasse für das GUI (MainView), die Config der Applikation und die Datenbank (durch den DatabaseAdapter).
  * Außerdem werden hier die aus der Datenbank geladenen Karteikarten in einer HashMap gespeichert.
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class SpacedRepetitionApp {
 

@@ -11,6 +11,9 @@ import java.awt.event.ItemListener;
 
 /**
  * Auswählen eines Algorithmus über die ComboBox
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class AlgorithmSelectionListener implements ItemListener {
 

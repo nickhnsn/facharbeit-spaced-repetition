@@ -2,6 +2,9 @@ package de.nickhansen.spacedrepetition.api.algorithm.fsrs;
 
 /**
  * Enum für die einzelnen Antworten (Ratings) auf einen Lerninhalt
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public enum FSRSRating {
 

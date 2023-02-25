@@ -1,5 +1,11 @@
 package de.nickhansen.spacedrepetition.software.util;
 
+/**
+ * Enum für die verschiedenen Typen von Algorithmen
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
+ */
 public enum AlgorithmType {
 
     LEITNER_SYSTEM("leitner", 2),

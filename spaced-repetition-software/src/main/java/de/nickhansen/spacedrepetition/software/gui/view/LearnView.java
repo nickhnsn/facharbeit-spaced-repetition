@@ -13,7 +13,10 @@ import java.util.Arrays;
 
 /**
  * LearnView als Tab der MainView:
- * Neue Karteikarten können hier erstellt werden, bisherige gelöscht werden und es gibt eine Karteikartenübersicht
+ * Hier können die Karteikarten mit einem ausgewählten Algorithmus gelernt bzw. wiederholt werden.
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class LearnView extends JPanel {
 

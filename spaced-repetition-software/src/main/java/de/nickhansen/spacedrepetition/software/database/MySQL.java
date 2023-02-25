@@ -9,6 +9,9 @@ import java.util.function.Function;
 
 /**
  * MySQL-Datenbankklasse, die die Verbindung zur Datenbank herstellt und verschiedene Aktionen (Updates, Queries, ...) ermöglicht
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class MySQL {
 

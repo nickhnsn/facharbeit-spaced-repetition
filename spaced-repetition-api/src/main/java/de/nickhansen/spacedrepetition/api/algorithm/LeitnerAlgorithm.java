@@ -4,6 +4,9 @@ import de.nickhansen.spacedrepetition.api.algorithm.result.LeitnerAlgorithmResul
 
 /**
  * Implementation eines Algorithmus nach Leitners Lernkarteisystem
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class LeitnerAlgorithm implements Algorithm {
 

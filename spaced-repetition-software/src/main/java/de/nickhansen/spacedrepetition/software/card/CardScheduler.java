@@ -21,6 +21,9 @@ import java.util.UUID;
 
 /**
  * Der CardScheduler verwaltet die Warteschlange an Karteikarten, die wiederholt werden müssen
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class CardScheduler {
 

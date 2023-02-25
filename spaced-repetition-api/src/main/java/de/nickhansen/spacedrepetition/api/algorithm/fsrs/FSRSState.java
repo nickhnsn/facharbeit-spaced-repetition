@@ -2,6 +2,9 @@ package de.nickhansen.spacedrepetition.api.algorithm.fsrs;
 
 /**
  * Enum für den Status eines Lerninhalts
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public enum FSRSState {
 

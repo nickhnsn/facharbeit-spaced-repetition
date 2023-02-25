@@ -2,6 +2,9 @@ package de.nickhansen.spacedrepetition.api.algorithm.result;
 
 /**
  * Berechnete Rückgaben des SuperMemo-Algorithmus SM-2
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class SM2AlgorithmResult extends AlgorithmResult {
 

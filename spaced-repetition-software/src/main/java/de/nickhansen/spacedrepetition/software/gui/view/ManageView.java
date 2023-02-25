@@ -15,7 +15,11 @@ import java.awt.*;
 import java.util.*;
 
 /**
- * The manage view tab of the main view
+ * ManageView als Tab der MainView:
+ * Neue Karteikarten können hier erstellt werden, bisherige gelöscht werden und es gibt eine Karteikartenübersicht
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class ManageView extends JPanel {
 

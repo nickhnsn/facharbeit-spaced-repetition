@@ -12,6 +12,9 @@ import java.util.concurrent.TimeUnit;
  * siehe https://github.com/open-spaced-repetition/fsrs4anki/wiki/Free-Spaced-Repetition-Scheduler
  * implementiert nach https://github.com/open-spaced-repetition/py-fsrs/blob/2f178564e805c5bfdf8501d8ef516723187266dd/src/fsrs/fsrs
  *       (MIT LICENSE, Copyright (c) 2022 Open Spaced Repetition)
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class FSRSAlgorithm implements Algorithm {
 

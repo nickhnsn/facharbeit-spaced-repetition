@@ -5,6 +5,9 @@ import de.nickhansen.spacedrepetition.api.algorithm.result.SM2AlgorithmResult;
 /**
  * Implementation des SuperMemo-Algorithmus SM-2 nach:
  * https://super-memory.com/english/ol/sm2.htm
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class SM2Algorithm implements Algorithm {
 

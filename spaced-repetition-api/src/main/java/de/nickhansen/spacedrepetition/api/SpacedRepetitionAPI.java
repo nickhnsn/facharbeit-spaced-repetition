@@ -11,6 +11,9 @@ import de.nickhansen.spacedrepetition.api.algorithm.result.SM2AlgorithmResult;
 
 /**
  * Hauptklasse der SpacedRepetitionAPI
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class SpacedRepetitionAPI {
 

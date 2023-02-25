@@ -9,6 +9,9 @@ import java.util.Arrays;
 
 /**
  * Bewerten einer Karteikarte über Buttons der LearnView
+ *
+ * @author Nick Hansen
+ * @version 25.02.2023
  */
 public class CardRatingListener implements ActionListener {
 
