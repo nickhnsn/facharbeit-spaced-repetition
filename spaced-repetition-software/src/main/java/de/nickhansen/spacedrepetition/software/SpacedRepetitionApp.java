@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.UUID;
 
@@ -30,7 +31,7 @@ public class SpacedRepetitionApp {
     private Properties config;
     private DatabaseAdapter databaseAdapter;
 
-    private HashMap<UUID, Card> cards;
+    private Map<UUID, Card> cards;
     private CardScheduler cardScheduler;
 
     /**
@@ -128,7 +129,7 @@ public class SpacedRepetitionApp {
      * Erhalten der HashMap, in der die aus der Datenbank geladenen Karteikarten gespeichert werden
      * @return die HashMap mit Karteikarten, in der die Karteikarte durch die UUID erhalten werden kann
      */
-    public HashMap<UUID, Card> getCards() {
+    public Map<UUID, Card> getCards() {
         return this.cards;
     }
 

@@ -125,12 +125,18 @@ public class CardScheduler {
                     LeitnerAlgorithm algorithm = builder.build();
                     LeitnerAlgorithmResult result = algorithm.calc();
 
-                    PreparedStatement db = SpacedRepetitionApp.getInstance().getDatabaseAdapter().getMySQL().prepare("UPDATE " + this.type.getDatabaseTable() + " SET box_id = ?, day_interval = ?, next_repetition = ? WHERE card_uuid = ?");
-                    db.setInt(1, result.getBoxId());
-                    db.setInt(2, result.getInterval());
-                    db.setLong(3, result.getNextRepetitionTime());
-                    db.setString(4, ratedCard.getUUID().toString());
-                    db.execute();
+                    // Berücksichtigung von Leitners Vorgabe, dass Karten ab Box 5 nicht mehr in der Lernkartei vorkommen
+                    // Karteikarten in einer Box ab 5 gelten als "fertig gelernt"
+                    if (result.toBeRemoved()) {
+                        SpacedRepetitionApp.getInstance().getDatabaseAdapter().getMySQL().syncUpdate("DELETE FROM " + this.type.getDatabaseTable() + " WHERE card_uuid = '" + ratedCard.getUUID() + "'");
+                    } else {
+                        PreparedStatement db = SpacedRepetitionApp.getInstance().getDatabaseAdapter().getMySQL().prepare("UPDATE " + this.type.getDatabaseTable() + " SET box_id = ?, day_interval = ?, next_repetition = ? WHERE card_uuid = ?");
+                        db.setInt(1, result.getBoxId());
+                        db.setInt(2, result.getInterval());
+                        db.setLong(3, result.getNextRepetitionTime());
+                        db.setString(4, ratedCard.getUUID().toString());
+                        db.execute();
+                    }
                 } else if (this.type == AlgorithmType.SUPERMEMO_2) {
                     SM2Algorithm algorithm = SM2Algorithm.builder()
                             .quality(rating + 1) // ansonsten wäre die Qualität zwischen 0 und 4; bei dem Algorithmus muss die Qualität jedoch zwischen 1 und 5 liegen
