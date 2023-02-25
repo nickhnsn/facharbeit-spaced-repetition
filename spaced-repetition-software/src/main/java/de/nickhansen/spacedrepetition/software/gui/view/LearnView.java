@@ -2,6 +2,7 @@ package de.nickhansen.spacedrepetition.software.gui.view;
 
 import de.nickhansen.spacedrepetition.software.listener.AlgorithmSelectionListener;
 import de.nickhansen.spacedrepetition.software.listener.CardRatingListener;
+import de.nickhansen.spacedrepetition.software.listener.CardShowListener;
 import de.nickhansen.spacedrepetition.software.listener.LearnUpdateListener;
 import de.nickhansen.spacedrepetition.software.util.AlgorithmType;
 import info.clearthought.layout.TableLayout;
@@ -22,7 +23,7 @@ public class LearnView extends JPanel {
 
     private JLabel algorithmLabel, chosenCardLabel, frontLabel, backLabel, divideLabel, frontDataLabel, backDataLabel;
     private JComboBox comboBox;
-    private JButton updateButton;
+    private JButton updateButton, showButton;
     private JButton[] buttons;
     private JPanel buttonPanel;
 
@@ -86,7 +87,12 @@ public class LearnView extends JPanel {
 
         this.backDataLabel = new JLabel();
         this.backDataLabel.setText("???");
+        this.backDataLabel.setVisible(false);
         add(this.backDataLabel, new TableLayoutConstraints(1, 7, 1, 7, TableLayoutConstraints.CENTER, TableLayoutConstraints.FULL));
+        this.showButton = new JButton();
+        this.showButton.setText("Rückseite aufdecken");
+        this.showButton.addActionListener(new CardShowListener());
+        add(this.showButton, new TableLayoutConstraints(1, 7, 1, 7, TableLayoutConstraints.CENTER, TableLayoutConstraints.FULL));
 
         //======== Buttons, um zu bewerten, wie gut man die Karteikarte konnte ========
         // Dafür wird ein neues Panel mit einem eigenen TableLayout erzeugt, welches in das vorherige Panel eingefügt wird.
@@ -164,5 +170,13 @@ public class LearnView extends JPanel {
      */
     public JButton[] getButtons() {
         return this.buttons;
+    }
+
+    /**
+     * Erhalten des Buttons, um den Rückseitentext der Karteikarte aufzudecken
+     * @return der Button zum Aufdecken der Karteikartenrückseite
+     */
+    public JButton getShowButton() {
+        return this.showButton;
     }
 }

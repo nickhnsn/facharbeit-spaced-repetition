@@ -26,14 +26,14 @@ public class CardDeletionListener implements ActionListener {
         JTable table = (JTable) e.getSource();
         int modelRow = Integer.parseInt(e.getActionCommand());
 
-        // Delete card
+        // Karteikarte löschen
         UUID uuid = (UUID) table.getModel().getValueAt(modelRow, 3);
         Card card = Card.getByUUID(uuid);
         if (card != null) {
             card.delete();
         }
 
-        // Delete table row
+        // Tabellenreihe löschen
         ((DefaultTableModel) table.getModel()).removeRow(modelRow);
 
         // Gelöschte Karteikarten aus dem CardScheduler entfernen

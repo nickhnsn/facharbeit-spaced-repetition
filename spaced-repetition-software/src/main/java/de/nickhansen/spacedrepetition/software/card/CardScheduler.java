@@ -76,25 +76,38 @@ public class CardScheduler {
             learnView.getFrontDataLabel().setText("Aktuell keine Karteikarten zum Wiederholen verfügbar");
             if (SpacedRepetitionApp.getInstance().getCards().size() == 0) {
                 learnView.getBackDataLabel().setText("Bitte erstelle Karteikarten!");
+                learnView.getBackDataLabel().setVisible(true);
+
                 SpacedRepetitionApp.getInstance().getMainView().getLearnView().getUpdateButton().setVisible(false);
+                SpacedRepetitionApp.getInstance().getMainView().getLearnView().getShowButton().setVisible(false);
+
                 SpacedRepetitionApp.getInstance().getMainView().getLearnView().updateButtonPanel(0);
             } else {
                 try {
                     ResultSet rs = SpacedRepetitionApp.getInstance().getDatabaseAdapter().getMySQL().query("SELECT next_repetition FROM " + this.type.getDatabaseTable() + " ORDER BY next_repetition ASC LIMIT 1");
                     if (rs.next()) {
                         learnView.getBackDataLabel().setText("Die nächste Karteikarte ist zur Wiederholung fällig am: " + new Date(rs.getLong("next_repetition")));
+                        learnView.getBackDataLabel().setVisible(true);
                     }
                 } catch (SQLException e) {
                     learnView.getBackDataLabel().setText("Bitte komme später noch einmal zur Wiederholung vorbei");
+                    learnView.getBackDataLabel().setVisible(true);
                     e.printStackTrace();
                 }
+
                 SpacedRepetitionApp.getInstance().getMainView().getLearnView().getUpdateButton().setVisible(true);
+                SpacedRepetitionApp.getInstance().getMainView().getLearnView().getShowButton().setVisible(false);
+
                 SpacedRepetitionApp.getInstance().getMainView().getLearnView().updateButtonPanel(0);
             }
         } else {
+            SpacedRepetitionApp.getInstance().getMainView().getLearnView().getUpdateButton().setVisible(false);
+            SpacedRepetitionApp.getInstance().getMainView().getLearnView().getShowButton().setVisible(true);
+
             learnView.getFrontDataLabel().setText(this.queue.front().getFront());
             learnView.getBackDataLabel().setText(this.queue.front().getBack());
-            SpacedRepetitionApp.getInstance().getMainView().getLearnView().getUpdateButton().setVisible(false);
+            learnView.getBackDataLabel().setVisible(false);
+
             SpacedRepetitionApp.getInstance().getMainView().getLearnView().updateButtonPanel(this.type.getRatingButtons());
         }
     }
