@@ -8,6 +8,8 @@ import de.nickhansen.spacedrepetition.software.util.AlgorithmType;
 
 import javax.swing.*;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Properties;
@@ -37,10 +39,16 @@ public class SpacedRepetitionApp {
     protected SpacedRepetitionApp() {
         instance = this;
 
-        // Laden der Konfigurationsdatei, die unter resources/config.properties gefunden werden kann
+        // Laden der Konfigurationsdatei config.properties
+        this.config = new Properties();
         try {
-            this.config = new Properties();
-            this.config.load(getClass().getResourceAsStream("/config.properties"));
+            // Falls eine Config im selben Ordner vorliegt, in der die JAR ausgeführt wird, wird diese genommen
+            if (new File("config.properties").exists()) {
+                this.config.load(Files.newInputStream(Paths.get("config.properties")));
+            } else {
+                // Rückgriff auf die Config mit den Standardwerten unter resources/config.properties bzw. die kompilierte Config
+                this.config.load(getClass().getResourceAsStream("/config.properties"));
+            }
             System.out.println("[Config] Successfully loaded the configuration file");
         } catch (IOException e) {
             System.out.println("[Config] Failed loading the configuration file: " + e);
