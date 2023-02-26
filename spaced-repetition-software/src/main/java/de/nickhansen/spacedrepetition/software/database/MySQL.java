@@ -1,5 +1,6 @@
 package de.nickhansen.spacedrepetition.software.database;
 
+import javax.swing.*;
 import java.sql.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
@@ -44,6 +45,10 @@ public class MySQL {
             connection = DriverManager.getConnection("jdbc:mysql://" + this.hostname + ":" + "3306" + "/" + this.database + "?autoReconnect=true", this.username, this.password);
             System.out.println("[Database] Successfully connected with database");
         } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(new JFrame("Spaced-Repetition-Software zur Facharbeit"),
+                    "MySQL-Fehler: " + e,
+                    "Fehler bei der Herstellung der Datenbankverbindung der Spaced-Repetition-Software", JOptionPane.ERROR_MESSAGE);
             System.out.println("[Database] Could not connect with database: " + e);
         }
 

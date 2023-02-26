@@ -1,5 +1,7 @@
 package de.nickhansen.spacedrepetition.software;
 
+import javax.swing.*;
+
 /**
  * Hauptklasse der Applikation, die den Launcher darstellt.
  * Der Launcher startet die Applikation, indem die Klasse SpacedRepetitionApp instanziiert wird.
@@ -16,6 +18,15 @@ public class SpacedRepetitionLauncher {
      */
     public static void main(String[] args) {
         System.out.println("[Launcher] Spaced Repetition App launching ...");
-        new SpacedRepetitionApp();
+        try {
+            new SpacedRepetitionApp();
+            System.out.println("[Launcher] Successfully launched the Spaced Repetition App");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(new JFrame("a"),
+                    "Fehler: " + e,
+                    "Fehler beim Starten der Spaced-Repetition-Software", JOptionPane.ERROR_MESSAGE);
+            System.out.println("[Launcher] Failed launching the Spaced Repetition App");
+        }
     }
 }
