@@ -8,7 +8,7 @@ import javax.swing.*;
  * In dem Konstruktur der SpacedRepetitionApp Klasse geschieht das Hauptsächliche zum Starten der Applikation.
  *
  * @author Nick Hansen
- * @version 25.02.2023
+ * @version 26.02.2023
  */
 public class SpacedRepetitionLauncher {
 

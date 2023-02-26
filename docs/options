@@ -1,0 +1,26 @@
+-classpath
+'D:/facharbeit-spaced-repetition/spaced-repetition-api/target/classes;D:/facharbeit-spaced-repetition/spaced-repetition-software/target/classes;C:/Users/Nick/.m2/repository/tablelayout/TableLayout/20050920/TableLayout-20050920.jar;C:/Users/Nick/.m2/repository/com/mysql/mysql-connector-j/8.0.31/mysql-connector-j-8.0.31.jar;C:/Users/Nick/.m2/repository/com/google/protobuf/protobuf-java/3.19.4/protobuf-java-3.19.4.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'8'
+-sourcepath
+'D:/facharbeit-spaced-repetition/spaced-repetition-api/src/main/java;D:/facharbeit-spaced-repetition/spaced-repetition-software/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2023. All rights reserved. Hosted by GitHub Pages.'
+-charset
+'UTF-8'
+-d
+'D:/facharbeit-spaced-repetition/docs'
+-docencoding
+'UTF-8'
+-doctitle
+'facharbeit-spaced-repetition: API & Software Documentation'
+-linkoffline
+'https://docs.oracle.com/javase/8/docs/api' 'D:/facharbeit-spaced-repetition/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'Documentation Spaced Repetition API & Software'
