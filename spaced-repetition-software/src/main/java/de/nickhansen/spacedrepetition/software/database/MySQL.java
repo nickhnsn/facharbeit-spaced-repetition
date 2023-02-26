@@ -46,7 +46,7 @@ public class MySQL {
             System.out.println("[Database] Successfully connected with database");
         } catch (SQLException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(new JFrame("Spaced-Repetition-Software zur Facharbeit"),
+            JOptionPane.showMessageDialog(new JFrame(),
                     "MySQL-Fehler: " + e,
                     "Fehler bei der Herstellung der Datenbankverbindung der Spaced-Repetition-Software", JOptionPane.ERROR_MESSAGE);
             System.out.println("[Database] Could not connect with database: " + e);

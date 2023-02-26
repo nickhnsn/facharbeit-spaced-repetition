@@ -23,7 +23,7 @@ public class SpacedRepetitionLauncher {
             System.out.println("[Launcher] Successfully launched the Spaced Repetition App");
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(new JFrame("a"),
+            JOptionPane.showMessageDialog(new JFrame(),
                     "Fehler: " + e,
                     "Fehler beim Starten der Spaced-Repetition-Software", JOptionPane.ERROR_MESSAGE);
             System.out.println("[Launcher] Failed launching the Spaced Repetition App");
