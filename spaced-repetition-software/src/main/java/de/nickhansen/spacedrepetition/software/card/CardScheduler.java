@@ -155,7 +155,7 @@ public class CardScheduler {
                             .quality(rating + 1) // ansonsten wäre die Qualität zwischen 0 und 4; bei dem Algorithmus muss die Qualität jedoch zwischen 1 und 5 liegen
                             .easinessFactor(rs.getFloat("easiness_factor"))
                             .interval(rs.getInt("day_interval"))
-                            .repetitions(rs.getInt("next_repetition"))
+                            .repetitions(rs.getInt("repetitions"))
                             .build();
 
                     SM2AlgorithmResult result = algorithm.calc();
