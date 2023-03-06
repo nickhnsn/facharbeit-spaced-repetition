@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  *                    (MIT LICENSE, Copyright (c) 2022 Open Spaced Repetition).
  *
  * @author Nick Hansen
- * @version 25.02.2023
+ * @version 06.03.2023
  */
 public class SchedulingCard {
 
@@ -61,7 +61,7 @@ public class SchedulingCard {
             this.ratingToCard.get(FSRSRating.EASY).setState(FSRSState.REVIEW);
 
         } else if(this.state == FSRSState.REVIEW) {
-            this.ratingToCard.get(FSRSRating.AGAIN).setState(FSRSState.LEARNING);
+            this.ratingToCard.get(FSRSRating.AGAIN).setState(FSRSState.RELEARNING);
             this.ratingToCard.get(FSRSRating.HARD).setState(FSRSState.REVIEW);
             this.ratingToCard.get(FSRSRating.GOOD).setState(FSRSState.REVIEW);
             this.ratingToCard.get(FSRSRating.EASY).setState(FSRSState.REVIEW);

@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  *       (MIT LICENSE, Copyright (c) 2022 Open Spaced Repetition)
  *
  * @author Nick Hansen
- * @version 25.02.2023
+ * @version 06.03.2023
  */
 public class FSRSAlgorithm implements Algorithm {
 
@@ -66,9 +66,9 @@ public class FSRSAlgorithm implements Algorithm {
     @Override
     public FSRSAlgorithmResult calc() {
         this.card = new SchedulingCard(System.currentTimeMillis(), this.stability, this.difficulty, this.elapsedDays, this.scheduledDays, this.repetitions, this.state, this.lastReview);
-        // Für jedes Ranking-Enum eine Karte mit Standard-Parametern erstellen
+        // Für jedes Ranking-Enum eine Karte erstellen
         for (FSRSRating rating : FSRSRating.values()) {
-            this.card.getRatingToCard().put(rating, new SchedulingCard(System.currentTimeMillis(), 0, 0, 0, 0, 0,  FSRSState.NEW, 0));
+            this.card.getRatingToCard().put(rating, new SchedulingCard(System.currentTimeMillis(), this.stability, this.difficulty, this.elapsedDays, this.scheduledDays, this.repetitions,  FSRSState.NEW, this.lastReview));
         }
 
         if (this.card.getState() == FSRSState.NEW) {

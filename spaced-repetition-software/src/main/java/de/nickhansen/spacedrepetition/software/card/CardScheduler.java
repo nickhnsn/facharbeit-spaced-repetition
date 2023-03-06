@@ -23,7 +23,7 @@ import java.util.UUID;
  * Der CardScheduler verwaltet die Warteschlange an Karteikarten, die wiederholt werden müssen
  *
  * @author Nick Hansen
- * @version 25.02.2023
+ * @version 06.03.2023
  */
 public class CardScheduler {
 
@@ -179,17 +179,16 @@ public class CardScheduler {
                             .build();
 
                     FSRSAlgorithmResult result = algorithm.calc();
-                    PreparedStatement db = SpacedRepetitionApp.getInstance().getDatabaseAdapter().getMySQL().prepare("UPDATE " + this.type.getDatabaseTable() + " SET repetitions = ?, difficulty = ?, stability = ?, elapsed_days = ?, repetitions = ?, state = ?, day_interval = ?, next_repetition = ?, last_review = ? WHERE card_uuid = ?");
+                    PreparedStatement db = SpacedRepetitionApp.getInstance().getDatabaseAdapter().getMySQL().prepare("UPDATE " + this.type.getDatabaseTable() + " SET repetitions = ?, difficulty = ?, stability = ?, elapsed_days = ?, state = ?, day_interval = ?, next_repetition = ?, last_review = ? WHERE card_uuid = ?");
                     db.setLong(1, result.getRepetitions());
                     db.setFloat(2, result.getDifficulty());
                     db.setFloat(3, result.getStability());
                     db.setInt(4, result.getElapsedDays());
-                    db.setInt(5, result.getRepetitions());
-                    db.setString(6, result.getState().toString());
-                    db.setInt(7, result.getInterval());
-                    db.setLong(8, result.getNextRepetitionTime());
-                    db.setLong(9, result.getLastReview());
-                    db.setString(10, ratedCard.getUUID().toString());
+                    db.setString(5, result.getState().toString());
+                    db.setInt(6, result.getInterval());
+                    db.setLong(7, result.getNextRepetitionTime());
+                    db.setLong(8, result.getLastReview());
+                    db.setString(9, ratedCard.getUUID().toString());
                     db.execute();
                 }
 
