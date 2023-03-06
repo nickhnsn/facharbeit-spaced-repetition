@@ -120,8 +120,6 @@ public class FSRSAlgorithm implements Algorithm {
         SchedulingCard newCard = this.card.getRatingToCard().get(this.rating);
         newCard.setLastReview(System.currentTimeMillis());
         newCard.setRepetitions(this.card.getRepetitions() + 1);
-        newCard.setElapsedDays(this.card.getElapsedDays());
-        newCard.setScheduledDays(this.card.getScheduledDays());
         return new FSRSAlgorithmResult(newCard);
     }
 
