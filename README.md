@@ -95,7 +95,10 @@ A Java Version >= 8 is required as well as an active MySQL instance.
 2. **Configuration of the database connection:** Edit the ``config.properties`` in the project and build it with ``mvn package``  or create a ``config.properties`` file in the same folder the software is executed.
 3. **Execute the software:** ``java -jar spaced-repetition-software-1.0-SNAPSHOT.jar``
 
-
+### Screenshots
+![Spaced Repetition Software ManageView](.github/manageview.png)
+![Spaced Repetition Software LearnView](.github/learnview.png)
+![Spaced Repetition Software LearnView_SM2](.github/learnview_sm2.png)
 ## License
 This project is licensed unter the terms of the [GNU General Public License v3.0](https://github.com/nickhnsn/facharbeit-spaced-repetition/blob/master/LICENSE)
 
