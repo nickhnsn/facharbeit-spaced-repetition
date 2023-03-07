@@ -20,7 +20,7 @@ public class MainView extends JFrame {
 
     /**
      * Konstruktur für die MainView, indem das Hauptfenster des GUIs erzeugt wird.
-     * Außerdem werden die Tabs erzeugt und in dem Hauptfenster eingefügt.
+     * Außerdem werden die Tabs erzeugt und in dem Hauptfenster eingefügt
      */
     public MainView() {
         // Titel für die Benutzeroberfläche

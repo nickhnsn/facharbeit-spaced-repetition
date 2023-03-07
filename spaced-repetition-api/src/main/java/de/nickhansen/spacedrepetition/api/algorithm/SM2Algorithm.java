@@ -27,7 +27,7 @@ public class SM2Algorithm implements Algorithm {
 
     /**
      * Konstruktor für den SM-2-Algorithmus, der den Builder nutzt.
-     * Durch den Builder sind alle nötigen Parameter bestimmt worden.
+     * Durch den Builder sind alle nötigen Parameter bestimmt worden
      * @param builder Builder für den SM-2-Algorithmus
      */
     public SM2Algorithm(SM2AlgorithmBuilder builder) {
@@ -38,9 +38,9 @@ public class SM2Algorithm implements Algorithm {
     }
 
     /**
-     * Der SuperMemo-Algorithmus SM-2.
+     * Der SuperMemo-Algorithmus SM-2:
      * Berechnet aus den Inputs repetitions, easinessFactor, quality und interval
-     * die Outputs newRepetitions, newEasinessFactor und newInterval.
+     * die Outputs newRepetitions, newEasinessFactor und newInterval
      * @return SM2AlgorithmResult mit den berechneten Rückgabewerten
      */
     @Override

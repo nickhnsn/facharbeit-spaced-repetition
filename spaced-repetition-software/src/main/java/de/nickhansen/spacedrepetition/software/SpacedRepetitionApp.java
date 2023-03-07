@@ -19,7 +19,7 @@ import java.util.UUID;
 /**
  * Die Klasse dient als „Zentrale“ der Applikation. Über die Instanz der Klasse kann auf wichtige Programmklassen zugegriffen werden,
  * d. h. auf die Hauptklasse für das GUI (MainView), die Config der Applikation und die Datenbank (durch den DatabaseAdapter).
- * Außerdem werden hier die aus der Datenbank geladenen Karteikarten in einer HashMap gespeichert.
+ * Außerdem werden hier die aus der Datenbank geladenen Karteikarten in einer HashMap gespeichert
  *
  * @author Nick Hansen
  * @version 25.02.2023
@@ -35,7 +35,7 @@ public class SpacedRepetitionApp {
     private CardScheduler cardScheduler;
 
     /**
-     * Instanziiert die SpacedRepetitionApp. Hier werden für das Starten der Applikation wesentliche Schritte durchgeführt.
+     * Instanziiert die SpacedRepetitionApp. Hier werden für das Starten der Applikation wesentliche Schritte durchgeführt
      */
     protected SpacedRepetitionApp() {
         instance = this;
@@ -78,7 +78,7 @@ public class SpacedRepetitionApp {
 
     /**
      * Laden der Karteikarten aus der Datenbanktabelle "cards".
-     * Dabei werden die Karten in der HashMap "cards" in der Klasse abgespeichert.
+     * Dabei werden die Karten in der HashMap "cards" in der Klasse abgespeichert
      */
     public void loadCards() {
         this.databaseAdapter.getMySQL().query("SELECT * FROM cards", resultSet -> {

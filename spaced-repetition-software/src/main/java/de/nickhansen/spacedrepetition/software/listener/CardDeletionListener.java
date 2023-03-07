@@ -18,7 +18,7 @@ import java.util.UUID;
 public class CardDeletionListener implements ActionListener {
 
     /**
-     * Die Methode wird abgerufen, sobald der Button zum Löschen der Karteikarte in dem JTable der ManageView geklickt wird.
+     * Die Methode wird abgerufen, sobald der Button zum Löschen der Karteikarte in dem JTable der ManageView geklickt wird
      * @param e das ausgeführte ActionEvent
      */
     @Override

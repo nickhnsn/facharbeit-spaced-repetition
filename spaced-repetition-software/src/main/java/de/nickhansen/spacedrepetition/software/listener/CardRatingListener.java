@@ -16,7 +16,7 @@ import java.util.Arrays;
 public class CardRatingListener implements ActionListener {
 
     /**
-     * Die Methode wird abgerufen, sobald einer der Bewertungsbuttons der LearnView geklickt wird.
+     * Die Methode wird abgerufen, sobald einer der Bewertungsbuttons der LearnView geklickt wird
      * @param e das ausgeführte ActionEvent
      */
     @Override

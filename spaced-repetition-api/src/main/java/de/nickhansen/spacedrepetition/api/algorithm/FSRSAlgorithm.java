@@ -58,7 +58,7 @@ public class FSRSAlgorithm implements Algorithm {
     }
 
     /**
-     * Der Free Spaced Repetition Scheduler Algorithmus.
+     * Der Free Spaced Repetition Scheduler Algorithmus:
      * Berechnet aus den Inputs rating, lastReview, stability, difficulty, elapsedDays, scheduledDays, repetitions und state
      * die Outputs dueTime, lastReview, stability, difficulty, elapsedDays, scheduledDays, repetitions und state
      * @return Free Spaced Repetition Scheduler Algorithmus mit den berechneten Rückgabewerten

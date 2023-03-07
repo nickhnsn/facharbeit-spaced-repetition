@@ -16,7 +16,7 @@ public class CardShowListener implements ActionListener {
 
 
     /**
-     * Die Methode wird abgerufen, sobald der Aufdeckungsbutton der LearnView geklickt wird.
+     * Die Methode wird abgerufen, sobald der Aufdeckungsbutton der LearnView geklickt wird
      * @param e das ausgeführte ActionEvent
      */
     @Override

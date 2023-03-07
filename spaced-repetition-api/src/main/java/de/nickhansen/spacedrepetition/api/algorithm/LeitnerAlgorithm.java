@@ -24,7 +24,7 @@ public class LeitnerAlgorithm implements Algorithm {
 
     /**
      * Konstruktor für den Algorithmus nach Leitners Lernkarteisystem, der den Builder nutzt.
-     * Durch den Builder sind alle nötigen Parameter bestimmt worden.
+     * Durch den Builder sind alle nötigen Parameter bestimmt worden
      * @param builder Builder für den Algorithmus nach Leitners Lernkarteisystem
      */
     public LeitnerAlgorithm(LeitnerAlgorithmBuilder builder) {
@@ -33,7 +33,7 @@ public class LeitnerAlgorithm implements Algorithm {
     }
 
     /**
-     * Der Algorithmus nach Leitners Lernkarteisystem.
+     * Der Algorithmus nach Leitners Lernkarteisystem:
      * Berechnet aus den Inputs boxId und retrievalSuccessful
      * die Outputs newBoxId und newInterval
      * @return LeitnerAlgorithmResult mit den berechneten Rückgabewerten

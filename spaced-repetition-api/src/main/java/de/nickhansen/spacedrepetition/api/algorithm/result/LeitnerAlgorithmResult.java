@@ -30,7 +30,7 @@ public class LeitnerAlgorithmResult extends AlgorithmResult {
 
     /**
      * Gibt an, ob der Lerninhalt aus der Lernkartei entfernt werden soll.
-     * Nach Leitner hat die Lernkartei fünf Fächer, sodass der Lerninhalt nach Fach 5 als "fertig" gelernt angesehen wird.
+     * Nach Leitner hat die Lernkartei fünf Fächer, sodass der Lerninhalt nach Fach 5 als "fertig" gelernt angesehen wird
      * @return
      */
     public boolean toBeRemoved() {

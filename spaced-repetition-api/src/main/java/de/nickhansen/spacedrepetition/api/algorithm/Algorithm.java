@@ -11,7 +11,7 @@ import de.nickhansen.spacedrepetition.api.algorithm.result.AlgorithmResult;
 public interface Algorithm {
 
     /**
-     * Jeder Algorithmus hat bestimmte Rückgaben, die berechnet wurden.
+     * Jeder Algorithmus hat bestimmte Rückgaben, die berechnet wurden
      * @return Rückgaben des Algorithmus
      */
     AlgorithmResult calc();

@@ -27,7 +27,7 @@ public class SpacedRepetitionAPI {
     }
 
     /**
-     * Beispiel zur Verwendung des implementierten Algorithmus nach Leitners Lernkartei.
+     * Beispiel zur Verwendung des implementierten Algorithmus nach Leitners Lernkartei
      * @param boxId bisherige Nummer des Fachs für den Inhalt
      * @param retrievalSuccessful Wahrheitswert, der angibt, ob der Lerninhalt erfolgreich abgerufen werden konnte (true) oder nicht (false)
      * @return Rückgabewerte des Algorithmus nach Leitners Lernkartei
@@ -42,7 +42,7 @@ public class SpacedRepetitionAPI {
     }
 
     /**
-     * Beispiel zur Verwendung des implementierten SM-2-Algorithmus mit dem Builder.
+     * Beispiel zur Verwendung des implementierten SM-2-Algorithmus mit dem Builder
      * @param quality Qualität mit welcher der Lerninhalt bewertet wurde
      * @param repetitions bisherige Wiederholungen
      * @param easinessFactor bisheriger Leichtigkeitsfaktor EF
@@ -61,7 +61,7 @@ public class SpacedRepetitionAPI {
     }
 
     /**
-     * Beispiel zur Verwendung des implementierten Free Spaced Repetition Scheduler Algorithmus mit dem Builder.
+     * Beispiel zur Verwendung des implementierten Free Spaced Repetition Scheduler Algorithmus mit dem Builder
      * @param rating die Bewertung des Abrufens des Lerninhalts
      * @param stability die Stabilität des Lerninhalts
      * @param difficulty die Schwierigkeit des Lerninhalts

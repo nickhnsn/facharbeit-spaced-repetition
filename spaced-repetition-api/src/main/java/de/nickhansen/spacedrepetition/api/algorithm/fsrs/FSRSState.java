@@ -8,10 +8,22 @@ package de.nickhansen.spacedrepetition.api.algorithm.fsrs;
  */
 public enum FSRSState {
 
-    NEW(0), // noch nie gelernt
-    LEARNING(1), // vor kurzem zum ersten Mal gelernt
-    REVIEW(2), // beim Abschließen des LEARNING States
-    RELEARNING(3); // vergessen im REVIEW State
+    /**
+     * noch nie gelernt
+     */
+    NEW(0),
+    /**
+     * vor kurzem zum ersten Mal gelernt
+     */
+    LEARNING(1),
+    /**
+     * beim Abschließen des LEARNING States
+     */
+    REVIEW(2),
+    /**
+     * vergessen im REVIEW State
+     */
+    RELEARNING(3);
 
     /**
      * Konstruktor für die Enum

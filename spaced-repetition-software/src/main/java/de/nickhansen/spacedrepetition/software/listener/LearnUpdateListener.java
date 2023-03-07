@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
 public class LearnUpdateListener implements ActionListener {
 
     /**
-     * Die Methode wird abgerufen, sobald der Aktualisierungsbutton in der LearnView geklickt wird.
+     * Die Methode wird abgerufen, sobald der Aktualisierungsbutton in der LearnView geklickt wird
      * @param e das ausgeführte ActionEvent
      */
     @Override

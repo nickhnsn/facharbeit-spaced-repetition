@@ -9,7 +9,7 @@
 'D:/facharbeit-spaced-repetition/spaced-repetition-api/src/main/java;D:/facharbeit-spaced-repetition/spaced-repetition-software/src/main/java'
 -author
 -bottom
-'Copyright &#169; 2023. All rights reserved. Hosted by GitHub Pages.'
+'Copyright &#169; 2023. All rights reserved.'
 -charset
 'UTF-8'
 -d
@@ -17,10 +17,10 @@
 -docencoding
 'UTF-8'
 -doctitle
-'facharbeit-spaced-repetition: API & Software Documentation'
+'facharbeit-spaced-repetition 1.0-SNAPSHOT API'
 -linkoffline
 'https://docs.oracle.com/javase/8/docs/api' 'D:/facharbeit-spaced-repetition/target/javadoc-bundle-options'
 -use
 -version
 -windowtitle
-'Documentation Spaced Repetition API & Software'
+'facharbeit-spaced-repetition 1.0-SNAPSHOT API'

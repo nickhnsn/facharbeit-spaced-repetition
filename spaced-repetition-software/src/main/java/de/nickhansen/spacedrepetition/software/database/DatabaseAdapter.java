@@ -17,7 +17,7 @@ public class DatabaseAdapter {
 
     /**
      * Konstruktor der DatabaseAdapters, der alle Daten aus der Konfiguration ausliest und die Datenbankverbindung herstellt.
-     * Außerdem werden alle Tabellen erstellt.
+     * Außerdem werden alle Tabellen erstellt
      */
     public DatabaseAdapter() {
         // Daten für die Datenbankverbindung aus der Konfigurationsdatei auslesen
@@ -34,7 +34,7 @@ public class DatabaseAdapter {
     }
 
     /**
-     * Erstellt alle für die Applikation notwendigen Tabellen in der Datenbank, falls diese noch nicht existieren.
+     * Erstellt alle für die Applikation notwendigen Tabellen in der Datenbank, falls diese noch nicht existieren
      */
     private void createTables() {
         /*
@@ -56,7 +56,7 @@ public class DatabaseAdapter {
     }
 
     /**
-     * Erhalten des MySQL-Objekts, mit dem die Datenbankverbindung hergestellt wurde.
+     * Erhalten des MySQL-Objekts, mit dem die Datenbankverbindung hergestellt wurde
      * @return das MySQL-Objekt
      */
     public MySQL getMySQL() {

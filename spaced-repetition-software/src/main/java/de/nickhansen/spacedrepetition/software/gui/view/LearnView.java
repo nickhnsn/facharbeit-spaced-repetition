@@ -29,7 +29,7 @@ public class LearnView extends JPanel {
 
     /**
      * Konstruktur für die LearnView, indem das Panel erzeugt wird, welches den Tab der MainView darstellt.
-     * Es werden alle Komponenten erstellt, aus denen das Panel besteht.
+     * Es werden alle Komponenten erstellt, aus denen das Panel besteht
      */
     public LearnView() {
         // Setzen des Layouts für die Tabelle
@@ -133,7 +133,7 @@ public class LearnView extends JPanel {
     }
 
     /**
-     * Erhalten des Labels, durch das die Vorderseite der Karteikarte gezeigt wir
+     * Erhalten des Labels, durch das die Vorderseite der Karteikarte gezeigt wird
      * @return das FrontDataLabel
      */
     public JLabel getFrontDataLabel() {

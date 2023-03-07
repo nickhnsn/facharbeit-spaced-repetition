@@ -31,7 +31,7 @@ public class ManageView extends JPanel {
 
     /**
      * Konstruktor für das ManageView, indem alle Komponenten für das Panel erzeugt werden.
-     * Für das Panel wird das TableLayout verwendet, indem die Komponenten angeordnet werden.
+     * Für das Panel wird das TableLayout verwendet, indem die Komponenten angeordnet werden
      */
     public ManageView() {
         // Setzen des Layouts für die Tabelle
@@ -87,7 +87,7 @@ public class ManageView extends JPanel {
 
     /**
      * Aktualisiert den Table, indem das TableModel neu gesetzt und die ButtonColumn neu instanziiert wird.
-     * Beispielsweise notwendig, wenn neue Karteikarten erstellt oder gelöscht wurden.
+     * Beispielsweise notwendig, wenn neue Karteikarten erstellt oder gelöscht wurden
      */
     public void updateTable() {
         this.table.setModel(getTableModel());
@@ -105,14 +105,14 @@ public class ManageView extends JPanel {
 
     /**
      * Instanziiert die ButtonColumn, die dafür verantwortlich ist, dass eine Spalte erstellt werden kann, in der ein Button ist und das Löschen von Zeilen ermöglicht.
-     * Diese ButtonColumn wird für das Löschen von Karteikarten durch einen Button benötigt.
+     * Diese ButtonColumn wird für das Löschen von Karteikarten durch einen Button benötigt
      */
     public void initButtonColumn() {
         new ButtonColumn(table, new CardDeletionListener(), 4);
     }
 
     /**
-     * Das TableModel erzeugt ein Modell für die Tabelle inkl. aller Daten.
+     * Das TableModel erzeugt ein Modell für die Tabelle inklusive aller Daten
      * @return TableModel mit allen Daten
      */
     private TableModel getTableModel() {

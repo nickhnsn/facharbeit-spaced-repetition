@@ -8,10 +8,22 @@ package de.nickhansen.spacedrepetition.api.algorithm.fsrs;
  */
 public enum FSRSRating {
 
-    AGAIN(0), // vergessen; falsche Antwort
-    HARD(1), // erinnert; richtige Antwort mit gewisser Schwierigkeit abgerufen
-    GOOD(2), // richtige Antwort nach Zögerung
-    EASY(3); // perfekte Antwort
+    /**
+     * vergessen; falsche Antwort
+     */
+    AGAIN(0),
+    /**
+     * erinnert; richtige Antwort mit gewisser Schwierigkeit abgerufen
+     */
+    HARD(1),
+    /**
+     * richtige Antwort nach Zögerung
+     */
+    GOOD(2),
+    /**
+     * perfekte Antwort
+     */
+    EASY(3);
 
     /**
      * Konstruktor für die Enum
