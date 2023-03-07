@@ -45,7 +45,7 @@ Add the dependency in your ``pom.xml`` to the dependencies:
 <dependency>
     <groupId>com.github.nickhnsn.facharbeit-spaced-repetition</groupId>
     <artifactId>spaced-repetition-api</artifactId>
-    <version>master-SNAPSHOT</version>
+    <version>v1.0.0</version>
 </dependency>
 ```
 
@@ -63,7 +63,7 @@ allprojects {
 Add the dependency to your ``build.gradle``:
 ```gradle
 dependencies {
-    implementation 'com.github.nickhnsn.facharbeit-spaced-repetition:spaced-repetition-api:master-SNAPSHOT'
+    implementation 'com.github.nickhnsn.facharbeit-spaced-repetition:spaced-repetition-api:v1.0.0'
 }
 ```
 
