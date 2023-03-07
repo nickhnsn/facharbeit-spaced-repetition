@@ -120,6 +120,36 @@ public class MySQL {
     }
 
     /**
+     * Query durchführen mithilfe eines Query-Strings
+     * @param query die Query
+     * @return das ResultSet
+     */
+    public ResultSet query(String query) {
+        checkConnection();
+        try {
+            return query(this.connection.prepareStatement(query));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * Query durchführen mithilfe eines PreparedStatements
+     * @param statement das PreparedStatement
+     * @return das ResultSet
+     */
+    public ResultSet query(PreparedStatement statement) {
+        checkConnection();
+        try {
+            return statement.executeQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
      * Query in der Datenbank synchron ausführen
      * @param statement das Statement in Form eines Strings
      * @param consumer  der Consumer
@@ -175,36 +205,6 @@ public class MySQL {
                 e.printStackTrace();
             }
         }
-    }
-
-    /**
-     * Query durchführen mithilfe eines Query-Strings
-     * @param query die Query
-     * @return das ResultSet
-     */
-    public ResultSet query(String query) {
-        checkConnection();
-        try {
-            return query(this.connection.prepareStatement(query));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    /**
-     * Query durchführen mithilfe eines PreparedStatements
-     * @param statement das PreparedStatement
-     * @return das ResultSet
-     */
-    public ResultSet query(PreparedStatement statement) {
-        checkConnection();
-        try {
-            return statement.executeQuery();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     /**
